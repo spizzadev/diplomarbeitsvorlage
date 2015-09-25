@@ -1,0 +1,8 @@
+job1:
+  script: "pdflatex -synctex=1 -interaction=nonstopmode _Diplomarbeit.tex"
+
+job2:
+  script: "bibtex _Diplomarbeit.aux"
+
+job3:
+  script: "pdflatex -synctex=1 -interaction=nonstopmode _Diplomarbeit.tex"

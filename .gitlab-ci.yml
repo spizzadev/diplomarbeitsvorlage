@@ -1,4 +1,4 @@
 job1:
   script: 
-    - "pdflatex -synctex=1 -interaction=nonstopmode _Diplomarbeit.tex"
-    - "pdflatex -synctex=1 -interaction=nonstopmode _Diplomarbeit.tex"
+    - "#!/bin/bash"
+    - "texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit"

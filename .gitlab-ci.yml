@@ -14,10 +14,10 @@ job1:
     - "rm -rf *.ist"
     - "rm -rf *.glg"
     - "rm -rf *.gls"
-    - if texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit
+    - if texfot pdflatex -shell-escape -file-line-error -interaction=nonstopmode _Diplomarbeit
     - then echo Ignore Errors on first run
     - fi
-    - if texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit
+    - if texfot pdflatex -shell-escape -file-line-error -interaction=nonstopmode _Diplomarbeit
     - then echo Errors on second run
     - fi
     - mv _Diplomarbeit.pdf /home/gitlab-runner/Diplomarbeiten-2015-16/$PROJEKT_NAME.pdf

@@ -1,17 +1,22 @@
 job1:
   script: 
-    - "#!/bin/bash"
-    - "rm -rf *.aux"
-    - "rm -rf *.lof"
-    - "rm -rf *.lot"
-    - "rm -rf *.out"
-    - "rm -rf *.toc"
-    - "rm -rf *.bbl"
-    - "rm -rf *.blg"
-    - "rm -rf *.brf"
-    - "rm -rf *.idx"
-    - "rm -rf *.glo"
-    - "rm -rf *.ist"
-    - "rm -rf *.glg"
-    - "rm -rf *.gls"
-    - "texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit"
+    - #!/bin/bash
+    - rm -rf *.aux
+    - rm -rf *.lof
+    - rm -rf *.lot
+    - rm -rf *.out
+    - rm -rf *.toc
+    - rm -rf *.bbl
+    - rm -rf *.blg
+    - rm -rf *.brf
+    - rm -rf *.idx
+    - rm -rf *.glo
+    - rm -rf *.ist
+    - rm -rf *.glg
+    - rm -rf *.gls
+    - texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit
+    - mv _Diplomarbeit.pdf /home/gitlab-runner/Diplomarbeiten-2015-16/$PROJEKT_NAME.pdf
+    - cd /home/gitlab-runner/Diplomarbeiten-2015-16/
+    - git add $PROJEKT_NAME.pdf
+    - git commit -m 'Build $CI_BUILD_ID'
+    - git push

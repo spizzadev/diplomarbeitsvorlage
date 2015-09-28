@@ -14,7 +14,9 @@ job1:
     - "rm -rf *.ist"
     - "rm -rf *.glg"
     - "rm -rf *.gls"
-    - texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit
+    - if texfot pdflatex -file-line-error -interaction=nonstopmode _Diplomarbeit
+    - then echo PDFLatex Errors
+    - fi
     - mv _Diplomarbeit.pdf /home/gitlab-runner/Diplomarbeiten-2015-16/$PROJEKT_NAME.pdf
     - cd /home/gitlab-runner/Diplomarbeiten-2015-16/
     - git add $PROJEKT_NAME.pdf

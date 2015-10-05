@@ -31,6 +31,3 @@ job1:
     - fi
     - mv _Diplomarbeit.pdf /home/gitlab-runner/Diplomarbeiten-2015-16/$PROJEKT_NAME.pdf
     - cd /home/gitlab-runner/Diplomarbeiten-2015-16/
-    - git add $PROJEKT_NAME.pdf
-    - git commit -m "Build $CI_BUILD_ID"
-    - git push

@@ -30,4 +30,3 @@ job1:
     - then echo Errors on third run
     - fi
     - mv _Diplomarbeit.pdf /home/gitlab-runner/Diplomarbeiten-2015-16/$PROJEKT_NAME.pdf
-    - cd /home/gitlab-runner/Diplomarbeiten-2015-16/

@@ -14,6 +14,7 @@ der HTL Wiener Neustadt]
 
 \newcommand{\htl@MainLanguage}{german}	% also referenced in htl.sty
 \newcommand{\htl@DoubleSided}{oneside}
+\newcommand{\htl@Colorcode}{color}
 \newcommand{\@datitelseiten}{}
 \newcommand{\@maketitlepages}{\@datitelseiten}  %default: Diplomarbeit
 
@@ -24,6 +25,8 @@ der HTL Wiener Neustadt]
 \DeclareOption{german}{\renewcommand{\htl@MainLanguage}{german}}
 \DeclareOption{oneside}{\renewcommand{\htl@DoubleSided}{oneside}}
 \DeclareOption{twoside}{\renewcommand{\htl@DoubleSided}{twoside}}
+\DeclareOption{color}{\renewcommand{\htl@Colorcode}{color}}
+\DeclareOption{black}{\renewcommand{\htl@Colorcode}{black}}
 \DeclareOption*{\ClassWarning{htldipl}{Unknown document option
 "\CurrentOption"}}
 \ProcessOptions

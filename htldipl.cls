@@ -11,6 +11,7 @@ der HTL Wiener Neustadt]
 \author{ }
 
 \RequirePackage{ifthen}
+\RequirePackage{pdfpages}
 
 \newcommand{\htl@MainLanguage}{german}	% also referenced in htl.sty
 \newcommand{\htl@DoubleSided}{oneside}
@@ -183,32 +184,37 @@ der HTL Wiener Neustadt]
 \newcommand{\@datitel}{%
 \begin{titlepage}%
 	\begin{center}%
-	\parbox[b][4cm]{3cm}{
-	\includegraphics[width=30mm]{\@schullogo}
-	}
-	\parbox[b][4cm]{8.5cm}{
-  		\centering\Large\@schule
-  		\vskip 0mm%
-  		\small{Höhere Lehranstalt für \@abteilung}
-  		\vskip 0mm%
-  		{\@schwerpunkt}
-	}%
-	\parbox[b][4cm]{3cm}{
-  	\includegraphics[width=30mm]{htl_allgemein.jpg}
-  	}
-\end{center}
-\rule{\textwidth}{1pt}
+		\raisebox{35mm}[\height][\depth]{
+			\parbox[b][4cm]{3cm}{
+				\includegraphics[width=30mm]{\@schullogo}
+			}
+			\parbox[b][4cm]{8.5cm}{
+  				\centering\Large\@schule
+  				\vskip 0mm%
+  				\small{Höhere Lehranstalt für \@abteilung}
+  				\vskip 0mm%
+  				{\@schwerpunkt}
+			}%
+			\parbox[b][4cm]{3cm}{
+  				\includegraphics[width=30mm]{htl_allgemein.jpg}
+  			}
+  		}
+	\end{center}
+	\begin{center}%
+		\raisebox{4cm}[\height][\depth]{
+			\rule{\textwidth}{1pt}
+		}
+	\end{center}
 \begin{center}%
   \setlength{\unitlength}{1cm}
-  	
-  	\vskip 10mm%
+  \vskip -10mm%
     {\Huge\bf D\,I\,P\,L\,O\,M\,A\,R\,B\,E\,I\,T}%
     \vskip 10mm%
   	\begin{picture}(12,4)
   		\put(0,1.8){\parbox{12cm}{\centering\huge\bf\setlength{\baselineskip}{20pt}\@title}}
   	\end{picture}
 \end{center}
-\vskip 0mm%
+\vskip -10mm%
     {\large\bf Ausgeführt im Schuljahr \@abgabejahr\ von:} 
     \begin{tabbing}
     \hspace*{1cm}\=\hspace*{8cm}\=\hspace*{5cm}\= \kill
@@ -235,6 +241,14 @@ der HTL Wiener Neustadt]
     	\> \@betreuerC \\ 
     \end{tabbing}
     {\large \@studienort, am \today}%
+    \begin{center}%
+    \rule{\textwidth}{1pt}
+    \end{center}%
+    \vskip 5mm
+    Abgabevermerk:
+    \\
+	\\
+    Übernommen von:
   \par\vfil\null
 \end{titlepage}%
 }
@@ -345,6 +359,8 @@ Quellen und Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich un
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
+
+
 
 %%-------------------------------------------------------------
 

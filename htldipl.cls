@@ -4,7 +4,7 @@
 %% Ursprünglicher Autor: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\htldiplDate}{2015/07/09} %Versionsdatum
+\newcommand{\htldiplDate}{2015/10/09} %Versionsdatum
 \ProvidesClass{htldipl}[\htldiplDate\space LaTeX-Vorlage fuer Diplomarbeiten
 der HTL Wiener Neustadt]
 

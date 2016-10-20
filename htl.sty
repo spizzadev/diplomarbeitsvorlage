@@ -74,13 +74,14 @@
 \ifthenelse{\equal{\htl@MainLanguage}{english}}%
 	{\main@language{english}}{}
 	
-\RequirePackage[fixlanguage]{babelbib}
+%\RequirePackage[fixlanguage]{babelbib}
 %\RequirePackage{natbib}
+\usepackage[backend=bibtex,bibencoding=utf8,style=verbose-inote,citestyle=authortitle]{biblatex}
 
 \RequirePackage{graphicx} 
 
-\RequirePackage[T1,hyphens,obeyspaces,spaces]{url}
-\urlstyle{sf}
+%\RequirePackage[T1,hyphens,obeyspaces,spaces]{url}
+%\urlstyle{sf}
 
 \RequirePackage{verbatim}
 \RequirePackage{moreverb}
@@ -505,7 +506,7 @@ keepspaces=true,%
 \RequirePackage[novbox]{pdfsync} % notwendig für inverse Suche aus dem PDF viewer
 % novbox Option verhindert Konflikt u.a. mit array-Package
 
-\RequirePackage[noadjust]{cite} % vermeidet zusätzliches Spacing vor [..]
+%\RequirePackage[noadjust]{cite} % vermeidet zusätzliches Spacing vor [..]
 
 \RequirePackage{ifpdf}
 \ifpdf % LaTeX is in native PDF mode (pdflatex) 

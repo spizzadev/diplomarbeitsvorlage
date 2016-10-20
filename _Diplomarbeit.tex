@@ -13,6 +13,10 @@
 \makeglossaries
 %\include{glossary}
 \loadglsentries{glossary}
+
+
+\addbibresource{literatur.bib}     %BibTeX-Datei literatur.bib
+
 %%%----------------------------------------------------------
 \begin{document}
 %%%----------------------------------------------------------
@@ -87,12 +91,7 @@
 %Literaturverzeichnis
 \clearpage
 \addcontentsline{toc}{chapter}{\bibname}
-
-\bibliographystyle{bababbrv} 
-%options: babplain, babunsrt, bababbrv, babalpha 
-%         babplain-fl etc: first/lastname 
-%         babplain-lf etc: last/firstname
-\bibliography{literatur}     %BibTeX-Datei literatur.bib
+\printbibliography
 
 
 %%%----------------------------------------------------------

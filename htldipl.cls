@@ -216,23 +216,20 @@ der HTL Wiener Neustadt]
 \end{center}
 \vskip -10mm%
     {\large\bf Ausgeführt im Schuljahr \@abgabejahr\ von:} 
-    \begin{tabbing}
-    \hspace*{1cm}\=\hspace*{8cm}\=\hspace*{5cm}\= \kill
-	\> \@subthemaA  \> \\    
-    	\> \@schuelerA \> \@evidenzA \\
-    	\\
-    	\> \@subthemaB  \> \\  
-    	\> \@schuelerB \> \@evidenzB \\ 
-    	\\
-    	\> \@subthemaC  \> \\  
-    	\> \@schuelerC \> \@evidenzC \\ 
-    	\\
-    	\> \@subthemaD  \> \\  
-    	\> \@schuelerD \> \@evidenzD \\ 
-    	\\
-    	\> \@subthemaE  \> \\  
-    	\> \@schuelerE \> \@evidenzE \\ 
-    \end{tabbing}
+    
+    \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} } l l r }
+\multicolumn{3}{p{0.9\textwidth}}{\@subthemaA} \\ 
+ & \@schuelerA & \@evidenzA \\[3mm]
+\multicolumn{3}{p{0.9\textwidth}}{\@subthemaB} \\ 
+ & \@schuelerB & \@evidenzB \\[3mm]
+\multicolumn{3}{p{0.9\textwidth}}{\@subthemaC} \\ 
+ & \@schuelerC & \@evidenzC \\[3mm]
+\multicolumn{3}{p{0.9\textwidth}}{\@subthemaD} \\ 
+ & \@schuelerD & \@evidenzD \\[3mm]
+\multicolumn{3}{p{0.9\textwidth}}{\@subthemaE} \\ 
+ & \@schuelerE & \@evidenzE \\[3mm]
+	\end{tabular*}
+    
     {\large\bf Betreuer / Betreuerin:}
     \begin{tabbing}
     \hspace*{1cm}\=\hspace*{5cm}\= \kill

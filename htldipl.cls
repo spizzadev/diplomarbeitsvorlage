@@ -214,7 +214,7 @@ der HTL Wiener Neustadt]
   		\put(0,1.8){\parbox{12cm}{\centering\huge\bf\setlength{\baselineskip}{20pt}\@title}}
   	\end{picture}
 \end{center}
-\vskip -10mm%
+\vskip 0mm%
     {\large\bf Ausgeführt im Schuljahr \@abgabejahr\ von:} 
     
     \begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill} } l l r }

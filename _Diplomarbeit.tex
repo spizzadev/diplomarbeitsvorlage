@@ -17,13 +17,17 @@
 \indexsetup{level=\subsection*, toclevel=subsection, noclearpage}
 
 
-\DeclareIndexNameFormat{default}{%
-  \usebibmacro{index:name}
-    {\index[name]}
-    {\namepartfamily}
-    {\namepartgiven}
-    {\namepartprefix}
-    {\namepartsuffix}}
+\makeatletter
+\@ifpackageloaded{biblatex_legacy}
+  {\DeclareIndexNameFormat{default}{%
+     \usebibmacro{index:name}{\index[names]}{#1}{#3}{#5}{#7}}}
+  {\DeclareIndexNameFormat{default}{%
+     \usebibmacro{index:name}{\index[names]}
+       {\namepartfamily}
+       {\namepartgiven}
+       {\namepartprefix}
+       {\namepartsuffix}}}
+\makeatother
 
 \DeclareIndexFieldFormat{indextitle}{%
   \usebibmacro{index:title}{\index[title]}{#1}}

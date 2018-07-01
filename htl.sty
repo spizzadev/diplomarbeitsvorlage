@@ -5,7 +5,7 @@
 \PassOptionsToPackage{T1,hyphens,obeyspaces,spaces}{url}
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\htlDate}{2015/10/09}			%Versionsdatum
+\newcommand{\htlDate}{2018/07/01}			%Versionsdatum
 \ProvidesPackage{htl}[\htlDate]
 
 % options german/english are passed from the class file
@@ -76,9 +76,10 @@
 	
 %\RequirePackage[fixlanguage]{babelbib}
 %\RequirePackage{natbib}
-\usepackage[backend=bibtex,bibencoding=utf8,style=verbose-inote,citestyle=authortitle]{biblatex}
-
+\usepackage[backend=biber,bibencoding=utf8,style=verbose-inote,citestyle=authortitle,indexing=true]{biblatex}
+\usepackage{imakeidx}
 \RequirePackage{graphicx} 
+\usepackage{subfigure}
 
 %\RequirePackage[T1,hyphens,obeyspaces,spaces]{url}
 \urlstyle{sf}

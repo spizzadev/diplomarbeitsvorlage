@@ -59,12 +59,12 @@ Sämtliche Komponenten sind kostenlos und für alle gängigen Plattformen verfü
 
 \subsubsection{Windows}
 
-Unter \emph{Windows} (7, 8, 10) hat sich folgendes Setup bewährt,
+Unter \gls{Windows}\index[allgemein]{Windows} (7, 8, 10) hat sich folgendes Setup bewährt,
 mit dem \ua auch dieses Dokument erstellt wurde:
 %
 \begin{itemize}
-\item \textbf{\latex-Distribution}: \emph{MikTeX 2.8} oder höher.
-MikTeX enthält auch alle notwendigen Hilfsprogramme, wie beispielsweise {\tt bibtex}.%
+\item \textbf{\latex-Distribution}: \emph{MikTeX 2.9} oder höher.
+MikTeX enthält auch alle notwendigen Hilfsprogramme, wie beispielsweise {\tt biber}.%
 \footnote{\url{http://www.miktex.org}}
 \item \textbf{Frontend}: \emph{TeXnicCenter}.%
 \footnote{\url{http://www.texniccenter.org}}
@@ -79,13 +79,33 @@ Beim erstem Mal sollten \emph{MikTeX} und \emph{TeXnicCenter} in genau dieser Re
 
 MikTeX sollte so eingerichtet werden, dass fehlende Pakete automatisch geladen werden. Beim ersten Erstellen der Arbeit werden dann alle notwendigen Pakete aus dem Internet geladen und stehen ab dann lokal zur Verfügung. Das erste Erstellen dauert dadurch allerdings mitunter sehr lange. Sollten trotzdem noch fehlende Pakete wie \zB\ \emph{tracklang.sty} angezeigt werden, so muss noch MikTeX aktualisiert werden. Update (Admin) im Startmenü von MikTeX unter Maintenance. Das Programm wählt automatisch die richtigen Pakete zur Aktualisierung aus. Sollten dann immer noch Pakete fehlen, sollte auch noch die Datenbank von MikTeX aktualisiert werden (Im MikTeX Pakete-Manager).
 
+Bei der Diplomarbeitsvorlage ist mit \texttt{\_Diplomarbeitsvorlage.tcp} bereits ein vorgefertigtes TeXnicCenter-Projekt enthalten. Damit dieses Projekt vollständig kompiliert werden kann, muss im TeXnicCenter noch das Ausgabeprofil korrekt eingestellt werden. Dieses Ausgabeprofil kann aus der Datei \texttt{\_Ausgabeprofil.tco} importiert werden oder gemäß der Abbildung \ref{fig:Settings} eingestellt werden. Die nicht vollständig sichtbaren Argumente bei \texttt{makeglossaries} sind \verb|-s "%tm.ist" -t "%tm.glg" -o "%tm.gls" "%tm.glo"|.
+
+\begin{figure}
+    \centering
+    \subfigure[]
+    {
+        \includegraphics[scale=.4]{TeXnicCenterEinstellungen.PNG}
+    }
+    \subfigure[]
+    {
+        \includegraphics[scale=.4]{TeXnicCenterEinstellungenGlossar.PNG}
+    }
+    \caption
+    {
+        (a) Einstellungen für pdflatex, biber und makeindex
+        (b) Einstellungen für makeglossaries
+    }
+    \label{fig:Settings}
+\end{figure}
+
 \subsubsection{Mac~OS}
 
 Unter Mac~OS wird die aktuelle Vorlage mangels verfügbarer Geräte nicht getestet. Der folgende Text bezieht sich auf die alte Vorlage und ist möglicherweise nicht mehr korrekt.
 
 Bewährte und weit verbreitete Frontends für den Mac sind \emph{MacTeX}%
 \footnote{\url{http://www.tug.org/mactex} -- enthält eine komplette und fertig
-konfigurierte \latex\-Installation für Mac~OS (ca.\ 1.15 GB download).}
+konfigurierte \latex\-Installation für Mac~OS\index[allgemein]{Mac~OS} (ca.\ 1.15 GB download).}
 und \emph{TeXShop},%
 \footnote{\url{http://www.uoregon.edu/~koch/texshop/}}
 das üblicherweise zusammen mit der TeX-Distribution \emph{TeX Live} verwendet wird. 
@@ -95,7 +115,7 @@ Weitere aktuelle Informationen zu der Arbeit mit \latex\ unter Mac~OS finden sic
 
 \subsubsection{Linux}
 
-Auch unter \gls{Linux} ist \emph{TeX Live} (\so) eine häufig verwendete TeX-Distri\-bution. 
+Auch unter \gls{Linux}\index[allgemein]{Linux}  ist \emph{TeX Live} (\so) eine häufig verwendete TeX-Distri\-bution. 
 Als Frontend sind beispielsweise
 \emph{Texmaker}\footnote{\url{http://www.xm1math.net/texmaker}}(empfohlen) \emph{Lyx}\footnote{\url{http://www.lyx.org}},
 \emph{Kile}\footnote{\url{http://kile.sourceforge.net}} und
@@ -149,16 +169,15 @@ sein. Erfreulicherweise ist sehr viel Nützliches auch online verfügbar.
 Gute Startpunkte sind \zB
 %
 \begin{itemize}
-\item \emph{{\rm\LaTeXe}-Kurzbeschreibung} von Schmidt et al.\ \cite{Schmidt01}
-\item \emph{The Not So Short Introduction to {\rm \LaTeXe}}
-            von Oetiker et al.\ \cite{Oetiker01}
+\item \emph{\citetitle{Schmidt01}}\footcite{Schmidt01}
+\item \emph{\citetitle{Oetiker01}}\footcite{Oetiker01}
 \end{itemize}
 %
 \noindent
 Als mittlerweile bereits klassisches Handbuch zu \latex ist
 %
 \begin{itemize}
-  \item \emph{A Guide to {\rm\LaTeXe}} von H.~Kopka und P.~Daly \cite{Kopka98}
+  \item \emph{\citetitle{Kopka98}}\footcite{Kopka98}
 \end{itemize}
 %
 zu empfehlen, zu dem es für Interessierte auch zwei vertiefende
@@ -174,15 +193,15 @@ Comprehensive TeX Archive Network} (CTAN) auf
 \end{quote}
 %
 Besonders nützlich sind auch die
-\emph{Comprehensive List of {\rm \latex} Symbols} \cite{Pakin01}
+\emph{Comprehensive List of {\rm \latex} Symbols} \footcite{Pakin01}
 und die Beschreibungen wichtiger \latex-Pakete, wie
 %
 \begin{quote}
-	\texttt{babel} \cite{Braams2008},\newline
-  \texttt{grahics}, \texttt{graphicx} \cite{Carlisle99},\newline
-  \texttt{fancyhdr} \cite{Oostrum97},\newline
-  \texttt{caption} \cite{Sommerfeldt07},\newline
-  \texttt{subfigure} \cite{Cochran95}.
+	\texttt{babel} \footcite{Braams2008},\newline
+  \texttt{grahics}, \texttt{graphicx} \footcite{Carlisle99},\newline
+  \texttt{fancyhdr} \footcite{Oostrum97},\newline
+  \texttt{caption} \footcite{Sommerfeldt07},\newline
+  \texttt{subfigure} \footcite{Cochran95}.
 \end{quote}
 
 

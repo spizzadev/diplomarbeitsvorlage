@@ -10,11 +10,36 @@
 \graphicspath{{images/}}    % wo liegen die Bilder?
 \usepackage[paper=a4paper,margin=3cm]{geometry}
 
+\makeindex[title=Index]
+\makeindex[name=allgemein, title=Allgemeiner Index]
+\makeindex[name=name,title={Autoren Index}]
+\makeindex[name=title,columns=1,title={Literatur Index}]
+\indexsetup{level=\subsection*, toclevel=subsection, noclearpage}
+
+
+\DeclareIndexNameFormat{default}{%
+  \usebibmacro{index:name}
+    {\index[name]}
+    {\namepartfamily}
+    {\namepartgiven}
+    {\namepartprefix}
+    {\namepartsuffix}}
+
+\DeclareIndexFieldFormat{indextitle}{%
+  \usebibmacro{index:title}{\index[title]}{#1}}
+
+\renewbibmacro*{bibindex}{%
+  \ifbibindex
+    {\indexnames{author}%
+     \indexnames{editor}%
+     \indexnames{translator}%
+     \indexnames{commentator}%
+     \indexfield{indextitle}}
+    {}}
+
 \makeglossaries
 %\include{glossary}
 \loadglsentries{glossary}
-
-
 \addbibresource{literatur.bib}     %BibTeX-Datei literatur.bib
 
 %%%----------------------------------------------------------
@@ -82,27 +107,33 @@
 %%%----------------------------------------------------------
 %%%Anhang
 \appendix
-\printglossaries
-\include{anhang_a}	% Technische Ergänzungen
+%\include{anhang_a}	% Technische Ergänzungen
 \include{anhang_b}	% Inhalt der CD-ROM/DVD
 \include{anhang_c}	% Chronologische Liste der Änderungen
 \include{anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
 
+\clearpage
+\printglossaries
+
+\clearpage
+\chapter*{Index}
+\addcontentsline{toc}{chapter}{Index}
+\printindex[allgemein]
+
+\printindex
+
+\printindex[name]
+
+\printindex[title]
+
+
 %Literaturverzeichnis
 \clearpage
 \addcontentsline{toc}{chapter}{\bibname}
 
 \printbibliography
-
-
-
-
-
-
-
-
 
 
 %%%----------------------------------------------------------

@@ -254,7 +254,7 @@ verwenden, und zwar \emph{ohne} die sonst erforderlichen Klammern (oder Hochkomm
 \end{quote}
 %
 Der richtige Monatsname wird abhängig von der Spracheinstellung für das Dokument automatisch eingesetzt.
-Ein Intervall über \emph{mehrere} Monate kann man in der (etwas eigenartigen) BibTeX-Syntax so angeben (verwendet \zB\ für "`Mai/Juni"' in \cite{Guttman01}):
+Ein Intervall über \emph{mehrere} Monate kann man in der (etwas eigenartigen) BibTeX-Syntax so angeben (verwendet \zB\ für "`Mai/Juni"' in \citetitle{Guttman01}\footcite{Guttman01}):
 \begin{quote}
 \verb!month=MAY # "/" # JUN!
 \end{quote}
@@ -280,4 +280,4 @@ bei einer dritten Auflage. Die richtige Punktuation in der Quellenangabe wird in
 
 \subsubsection{Listing aller Quellen}
 
-Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Literaturverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Literaturverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\footcite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!

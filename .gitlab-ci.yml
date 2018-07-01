@@ -17,7 +17,7 @@ job1:
     - if texfot pdflatex -shell-escape -file-line-error -interaction=nonstopmode _Diplomarbeit
     - then echo Ignore Errors on first run
     - fi
-    - if biber _Diplomarbeit.aux
+    - if biber _Diplomarbeit
     - then echo Errors creating the bibliography
     - fi
     - if makeglossaries _Diplomarbeit

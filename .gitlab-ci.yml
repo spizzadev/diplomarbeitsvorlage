@@ -17,11 +17,14 @@ job1:
     - if texfot pdflatex -shell-escape -file-line-error -interaction=nonstopmode _Diplomarbeit
     - then echo Ignore Errors on first run
     - fi
-    - if bibtex _Diplomarbeit.aux
+    - if biber _Diplomarbeit.aux
     - then echo Errors creating the bibliography
     - fi
     - if makeglossaries _Diplomarbeit
     - then echo Errors creating the glossary
+    - fi
+    - if makeindex _Diplomarbeit
+    - then echo Errors creating the index
     - fi
     - if texfot pdflatex -shell-escape -file-line-error -interaction=nonstopmode _Diplomarbeit
     - then echo Errors on second run

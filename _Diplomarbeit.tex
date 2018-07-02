@@ -20,9 +20,9 @@
 \makeatletter
 \@ifpackageloaded{biblatex_legacy}
   {\DeclareIndexNameFormat{default}{%
-     \usebibmacro{index:name}{\index[names]}{#1}{#3}{#5}{#7}}}
+     \usebibmacro{index:name}{\index[name]}{#1}{#3}{#5}{#7}}}
   {\DeclareIndexNameFormat{default}{%
-     \usebibmacro{index:name}{\index[names]}
+     \usebibmacro{index:name}{\index[name]}
        {\namepartfamily}
        {\namepartgiven}
        {\namepartprefix}

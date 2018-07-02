@@ -23,9 +23,6 @@ job1:
     - if biber _Diplomarbeit
     - then echo Errors creating the bibliography
     - fi
-    - if makeindex _Diplomarbeit
-    - then echo Errors creating the index
-    - fi
     - if makeglossaries _Diplomarbeit
     - then echo Errors creating the glossary
     - fi

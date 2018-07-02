@@ -60,8 +60,8 @@ Einige Beispiele dazu:
       $\rightarrow$ Mehr über \emph{Styles} in \citetitle{Kopka98}\footcite[][Kap.\ 3]{Kopka98}.
 \item[] \verb!Die Angaben in \citetitle{Ears99}\footcite[][S.\ 274--277]{Ears99} sind falsch.! \newline
       $\rightarrow$ Die Angaben in \citetitle{Ears99}\footcite[][S.\ 274--277]{Ears99} sind aus meiner Sicht falsch.
-\item[] \verb!überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}!\newline\verb!\footcite{Ears99,Microsoft01,Duden97}.! \newline
-      $\rightarrow$ überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}\footcite{Ears99,Microsoft01,Duden97}.
+\item[] \verb!überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}!\newline\verb!\footcite[][]{Ears99,Microsoft01,Duden97}.! \newline
+      $\rightarrow$ überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}\footcite[][]{Ears99,Microsoft01,Duden97}.
 \end{itemize}
 
 
@@ -72,6 +72,11 @@ Einige Beispiele dazu:
 Literaturverweise sollten innerhalb oder am Ende eines Satzes (vor
 dem Punkt) stehen, nicht \emph{außerhalb}, wie
 hier. \footcite[siehe][]{Oetiker01} $\leftarrow$~FALSCH!
+
+\subsubsection{Verweis nicht sichtbar}
+Wenn eine Quelle\repeatfootcite{Kopka98} mehrfach in einem Kapitel verwendet wird, müssen alle Stellen gekennzeichnet werden, an denen die Quelle\repeatfootcite{Kopka98} verwendet wird. Ein einfacher Verweis auf die Quelle\repeatfootcite{Kopka98} am Anfang des Kapitels ist nicht ausreichend.
+
+Um mehrfache gleiche Zeilen in den Fußnoten zu vermeiden können Zitate mit dem Befehl \verb|\repeatfootcite{Kopka98}| geschrieben werden, der gleiche Zitate zusammenfasst.
 
 \subsubsection{Zitate}
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,

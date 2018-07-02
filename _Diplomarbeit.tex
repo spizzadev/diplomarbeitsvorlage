@@ -7,49 +7,18 @@
 % die folgende Zeile einkommentieren für Arial-Ähnliche Schriftart
 %\renewcommand{\familydefault}{\sfdefault}
 
-\graphicspath{{images/}}    % wo liegen die Bilder?
-\usepackage[paper=a4paper,margin=3cm]{geometry}
+\graphicspath{{images/}}    % Bilderverzeichnis
 
-\makeindex[title=Index]
-\makeindex[name=allgemein, title=Allgemeiner Index]
-\makeindex[name=name,title={Autoren Index}]
-\makeindex[name=title,columns=1,title={Literatur Index}]
-\indexsetup{level=\subsection*, toclevel=subsection, noclearpage}
-
-
-\makeatletter
-\@ifpackageloaded{biblatex_legacy}
-  {\DeclareIndexNameFormat{default}{%
-     \usebibmacro{index:name}{\index[name]}{#1}{#3}{#5}{#7}}}
-  {\DeclareIndexNameFormat{default}{%
-     \usebibmacro{index:name}{\index[name]}
-       {\namepartfamily}
-       {\namepartgiven}
-       {\namepartprefix}
-       {\namepartsuffix}}}
-\makeatother
-
-\DeclareIndexFieldFormat{indextitle}{%
-  \usebibmacro{index:title}{\index[title]}{#1}}
-
-\renewbibmacro*{bibindex}{%
-  \ifbibindex
-    {\indexnames{author}%
-     \indexnames{editor}%
-     \indexnames{translator}%
-     \indexnames{commentator}%
-     \indexfield{indextitle}}
-    {}}
+\include{Settings}
 
 \makeglossaries
-%\include{glossary}
-\loadglsentries{glossary}
-\addbibresource{literatur.bib}     %BibTeX-Datei literatur.bib
+\loadglsentries{glossary}					%beinhaltet Daten für das Glossar
+\addbibresource{literatur.bib}     %beinhaltet Daten für das Literarturverzeichnis
 
 %%%----------------------------------------------------------
 \begin{document}
 %%%----------------------------------------------------------
-
+%Einstellungen an die eigene Diplomarbeit anpassen
 \title{Entwurf eines Versuchstandes für Kreiselpumpen}
 \abteilung{Maschineningenieurwesen}
 %\schwerpunkt{} wenn kein Ausbildungsschwerpunkt vorhanden ist z.B. Informatik
@@ -117,7 +86,7 @@
 \include{anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
-
+%Ausgabe der automatischen Zusatzdaten: Glossar, Index, Literaturverzeichnis
 \clearpage
 \printglossaries
 
@@ -143,6 +112,6 @@
 %%%----------------------------------------------------------
 
 %%%Messbox zur Druckkontrolle
-\include{messbox}
+%\include{messbox}
 
 \end{document}

@@ -207,7 +207,7 @@ der HTL Wiener Neustadt]
 	\end{center}
 \begin{center}%
   \setlength{\unitlength}{1cm}
-  \vskip -10mm%
+  \vskip -30mm%
     {\Huge\bf D\,I\,P\,L\,O\,M\,A\,R\,B\,E\,I\,T}%
     \vskip 10mm%
   	\begin{picture}(12,4)
@@ -241,11 +241,12 @@ der HTL Wiener Neustadt]
     \begin{center}%
     \rule{\textwidth}{1pt}
     \end{center}%
-    \vskip 5mm
-    Abgabevermerk:
-    \\
-	\\
-    Übernommen von:
+    \vskip 3mm
+		\begin{tabbing}
+    \hspace*{9cm}\= \kill
+    Abgabevermerk: \> Übernommen von:\\
+    \end{tabbing}
+
   \par\vfil\null
 \end{titlepage}%
 }

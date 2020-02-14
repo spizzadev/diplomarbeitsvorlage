@@ -176,3 +176,13 @@ pip-log.txt
 *.out
 *.tps
 *.dvi
+*.idx
+*.gls
+*.glo
+*.ilg
+*.ind
+*.ist
+*.glg
+*.bcf
+_Diplomarbeit.run.xml
+*.pdf

@@ -350,15 +350,25 @@ keepspaces=true,%
 \definecolor{htlgray}{rgb}{0.5,0.5,0.5}
 \definecolor{htlmauve}{rgb}{0.58,0,0.82}
 \definecolor{htlmaroon}{rgb}{0.5,0,0}
+\definecolor{htlred}{rgb}{0.8,0,0}
+\definecolor{htldarkblue}{rgb}{0,0,0.7}
 
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color
   commentstyle=\color{htlgreen},    % comment style
   keywordstyle=\color{blue},       % keyword style
+	ndkeywordstyle=\color{htldarkblue},
   stringstyle=\color{htlmauve},     % string literal style
 	identifierstyle=\color{htlmaroon}
 }
-}{}
+}{
+	\definecolor{htlgreen}{rgb}{0,0,0}
+	\definecolor{htlgray}{rgb}{0,0,0}
+	\definecolor{htlmauve}{rgb}{0,0,0}
+	\definecolor{htlmaroon}{rgb}{0,0,0}
+	\definecolor{htlred}{rgb}{0,0,0}
+	\definecolor{htldarkblue}{rgb}{0,0,0.7}
+}
 
 \lstnewenvironment{JavaCode}	% code environment for Java 
 {\lstset{%
@@ -369,10 +379,10 @@ keepspaces=true,%
 
 \lstdefinelanguage{XML}{ 
 	morestring=[b]",
-  moredelim=[s][\color{red}]{<}{\ },
-  moredelim=[s][\color{red}]{</}{>},
-  moredelim=[l][\color{red}]{/>},
-  moredelim=[l][\color{red}]{>},
+  moredelim=[s][\color{htlred}]{<}{\ },
+  moredelim=[s][\color{htlred}]{</}{>},
+  moredelim=[l][\color{htlred}]{/>},
+  moredelim=[l][\color{htlred}]{>},
   morecomment=[s]{<?}{?>},
   morecomment=[s]{<!--}{-->}
 }
@@ -383,6 +393,25 @@ keepspaces=true,%
 	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
 	}}
 {}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstnewenvironment{JSCode}	% code environment for JavaScript
+{\lstset{
+   language=JavaScript,
+	 escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+}}
+{}
+
+
 
 \lstnewenvironment{CCode}	% code environment for C (ANSI)
 {\lstset{%

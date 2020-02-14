@@ -541,6 +541,7 @@ PHP:  		& \verb!\begin{PhpCode}     ... \end{PhpCode}! \\
 Python:  	& \verb!\begin{PythonCode}  ... \end{PythonCode}! \\
 C\#:  		& \verb!\begin{CSharpCode}  ... \end{CSharpCode}! \\
 XML:  		& \verb!\begin{XMLCode}  ... \end{XMLCode}! \\
+JavaScript:  		& \verb!\begin{JSCode}  ... \end{JSCode}! \\
 Generisch:  & \verb!\begin{GenericCode} ... \end{GenericCode}! 
 \end{tabular}
 \end{center}
@@ -655,15 +656,20 @@ jeweils mit eigener Caption. In \texttt{htl.sty} ist eine neue Float-Umgebung
 \begin{program}
 \caption{Der Titel zu diesem Programmstück.}
 \label{prog:xyz}
-\begin{XMLCode}
-  <Window x:Class="WpfApplication1.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-  <Grid>
-  </Grid>
-</Window>
-\end{XMLCode}
+\begin{JSCode}
+  document.addEventListener('DOMContentLoaded', Geheim);
+
+  function Geheim () {
+    var Passwort = 'Traumtaenzer';
+    var Eingabe = window.prompt('Bitte geben Sie das Passwort ein', '');
+
+    if (Eingabe != Passwort) {
+        alert('Falsches Passwort!');
+    } else {
+        location.href = 'geheim.htm';
+    }
+  }
+\end{JSCode}
 \end{program}
 \end{verbatim}
 \end{quote}
@@ -684,17 +690,21 @@ Mit dem subprogram-Befehl können nicht nur Bilder, sondern auch Programmcodes z
 \caption{Zwei Code Beispiele}
 	\label{prog:multi}
   \begin{subprogram}[b]{.5\linewidth}
-    \begin{JavaCode}
-static String extractEmail(String line) {
-    line = line.trim(); // find the first blank
-    int i = line.indexOf(' '); 
-    if (i > 0)
-        return line.substring(i).trim();
-    else
-        return null;
-}
-\end{JavaCode}
-    \caption{Java Code Beispiel}
+    \begin{JSCode}
+  document.addEventListener('DOMContentLoaded', Geheim);
+
+  function Geheim () {
+    var Passwort = 'Traumtaenzer';
+    var Eingabe = window.prompt('Bitte geben Sie das Passwort ein', '');
+
+    if (Eingabe != Passwort) {
+        alert('Falsches Passwort!');
+    } else {
+        location.href = 'geheim.htm';
+    }
+  }
+\end{JSCode}
+    \caption{JavaScript Code Beispiel}
   \end{subprogram}
   \begin{subprogram}[b]{.5\linewidth}
     \begin{XMLCode}

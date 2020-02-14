@@ -80,7 +80,7 @@
 \usepackage[backend=biber,bibencoding=utf8,style=verbose-inote,citetracker,citestyle=authortitle,indexing=true]{biblatex}
 \usepackage{imakeidx}
 \RequirePackage{graphicx} 
-\usepackage{subfigure}
+\usepackage{subcaption}
 
 %\RequirePackage[T1,hyphens,obeyspaces,spaces]{url}
 \urlstyle{sf}
@@ -98,10 +98,12 @@
 
 
 % Captions mit Fontgroesse "small" und Abstand vom Seitenrand
-\RequirePackage[small,bf]{caption}
-\setlength{\captionmargin}{5mm}
-\setlength{\abovecaptionskip}{10pt}
-\setlength{\belowcaptionskip}{10pt}
+%\RequirePackage[small,bf]{caption}
+%\setlength{\captionmargin}{5mm}
+%\setlength{\abovecaptionskip}{10pt}
+%\setlength{\belowcaptionskip}{10pt}
+\captionsetup[subfigure]{font=small, labelfont=bf}
+
 
 %\RequirePackage[small,rm,loose]{subfigure}
 %\setlength{\subfigtopskip}{7pt}
@@ -295,6 +297,7 @@ H\"ohe $ = #2 {\rm\ mm}$
   \floatname{algorithm}{Algorithm}
 }{}
 
+\DeclareCaptionSubType{program}
 
 \RequirePackage{color}
 \definecolor{lightgray}{gray}{0.9}
@@ -346,18 +349,37 @@ keepspaces=true,%
 \definecolor{htlgreen}{rgb}{0,0.6,0}
 \definecolor{htlgray}{rgb}{0.5,0.5,0.5}
 \definecolor{htlmauve}{rgb}{0.58,0,0.82}
+\definecolor{htlmaroon}{rgb}{0.5,0,0}
 
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color
   commentstyle=\color{htlgreen},    % comment style
   keywordstyle=\color{blue},       % keyword style
   stringstyle=\color{htlmauve},     % string literal style
+	identifierstyle=\color{htlmaroon}
 }
 }{}
 
 \lstnewenvironment{JavaCode}	% code environment for Java 
 {\lstset{%
 	language=Java,%
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	}}
+{}
+
+\lstdefinelanguage{XML}{ 
+	morestring=[b]",
+  moredelim=[s][\color{red}]{<}{\ },
+  moredelim=[s][\color{red}]{</}{>},
+  moredelim=[l][\color{red}]{/>},
+  moredelim=[l][\color{red}]{>},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s]{<!--}{-->}
+}
+
+\lstnewenvironment{XMLCode}	% code environment for XML
+{\lstset{%
+	language=XML,%
 	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
 	}}
 {}

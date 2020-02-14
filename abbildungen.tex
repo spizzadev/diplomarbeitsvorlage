@@ -319,7 +319,7 @@ einreihige Rollenlager in Abb.~\ref{fig:Bearings}\thinspace(c), so aussehen:
 \end{itemize}
 %
 Für kompliziertere Abbildungen sollte man die Verwendung des 
-\texttt{subfigure}-Pakets \footcite{Cochran95} in Betracht ziehen. Ein Beispiel ist in der Vorlage in Abbildung \ref{fig:Settings} zu finden.
+\texttt{subcaption}-Pakets \footcite{Cochran95} in Betracht ziehen. Ein Beispiel ist in der Vorlage in Abbildung \ref{fig:Settings} zu finden.
 
 
 \subsection{Quellenangaben in Captions}
@@ -540,6 +540,7 @@ Java:       & \verb!\begin{JavaCode}    ... \end{JavaCode}! \\
 PHP:  		& \verb!\begin{PhpCode}     ... \end{PhpCode}! \\
 Python:  	& \verb!\begin{PythonCode}  ... \end{PythonCode}! \\
 C\#:  		& \verb!\begin{CSharpCode}  ... \end{CSharpCode}! \\
+XML:  		& \verb!\begin{XMLCode}  ... \end{XMLCode}! \\
 Generisch:  & \verb!\begin{GenericCode} ... \end{GenericCode}! 
 \end{tabular}
 \end{center}
@@ -593,7 +594,7 @@ public class My_Inverter implements PlugInFilter {
 
 Da Quelltexte sehr umfangreich werden können, ist diese Aufgabe nicht
 immer leicht zu lösen. Abhängig vom Umfang und vom Bezug zum Haupttext
-gibt es grundsätzlich drei Möglichkeiten zur Einbindung von Programmtext:
+gibt es grundsätzlich vier Möglichkeiten zur Einbindung von Programmtext:
 %
 \begin{itemize}
 \item[a)] im laufenden Text für kurze Programmstücke,
@@ -654,14 +655,20 @@ jeweils mit eigener Caption. In \texttt{htl.sty} ist eine neue Float-Umgebung
 \begin{program}
 \caption{Der Titel zu diesem Programmstück.}
 \label{prog:xyz}
-\begin{JavaCode}
-  class IrgendWas {
-    ...
-  }
-\end{JavaCode}
+\begin{XMLCode}
+  <Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+  <Grid>
+  </Grid>
+</Window>
+\end{XMLCode}
 \end{program}
 \end{verbatim}
 \end{quote}
+
+
 %
 Wenn man möchte, kann man in diesem Fall die Caption auch unten anbringen (aber konsistent und nicht gemischt).
 Natürlich darf man auch hier  nicht mit einer linearen  Abfolge im fertigen
@@ -669,6 +676,40 @@ Druckbild rechnen, daher sind Wendungen wie
 "`... im  folgenden Programmstück ..."' zu vermeiden und entsprechende Verweise
 einzusetzen. Beispiele dafür sind die Programme \ref{prog:processors-source} und \ref{prog:CodeExample}.
 
+\subsubsection{Mehrere Codefragmente zusammenfassen}
+
+Mit dem subprogram-Befehl können nicht nur Bilder, sondern auch Programmcodes zusammengefasst werden wie in den Programmen in \ref{prog:multi} zu sehen ist.
+
+\begin{program}
+\caption{Zwei Code Beispiele}
+	\label{prog:multi}
+  \begin{subprogram}[b]{.5\linewidth}
+    \begin{JavaCode}
+static String extractEmail(String line) {
+    line = line.trim(); // find the first blank
+    int i = line.indexOf(' '); 
+    if (i > 0)
+        return line.substring(i).trim();
+    else
+        return null;
+}
+\end{JavaCode}
+    \caption{Java Code Beispiel}
+  \end{subprogram}
+  \begin{subprogram}[b]{.5\linewidth}
+    \begin{XMLCode}
+  <Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+  <Grid>
+  </Grid>
+</Window>
+\end{XMLCode}
+\caption{XML Code Beispiel}
+  \end{subprogram}
+  
+\end{program}
 
 \subsubsection{Programmtext im Anhang}
 

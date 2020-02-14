@@ -56,6 +56,15 @@ Zum Arbeiten mit \latex\ benötigt man zwei Dinge:
 %
 Sämtliche Komponenten sind kostenlos und für alle gängigen Plattformen verfügbar.
 
+Die Distribution beinhaltet mehrere ausführbare Dateien die zusammen aus dem Dokument das PDF erstellen. Je nach verwendeter Software müssen die Einstellungen für diese Programme eventuell manuell angepasst werden.
+
+Die für die Vorlage notwendigen Programme sind:
+\begin{itemize}
+	\item \textbf{pdflatex} erstellt die PDF Datei (z.B. unter Windows pdflatex.exe) mit den Argumenten \textit{-interaction=nonstopmode "\%wm" }
+	\item \textbf{biber} erstellt das Literatur-Verzeichnis (z.B. unter Windows biber.exe) mit den Argumenten \textit{"\%wm" }
+	\item \textbf{makeindex} erstellt das Inhaltsverzeichnis und die Nummerierung der Kapitel,... (z.B. unter Windows makeindex.exe) mit den Argumenten \textit{"\%tm.idx" -t "\%tm.ilg" -o "\%tm.ind" }
+	\item \textbf{makeglossaries} erstellt die Glossaren (z.B. unter Windows makeglossaries-lite.exe) mit den Argumenten \textit{-s "\%tm.ist" -t "\%tm.glg" -o "\%tm.gls" "\%tm.glo" }
+\end{itemize}
 
 \subsubsection{Windows}
 
@@ -83,19 +92,15 @@ Bei der Diplomarbeitsvorlage ist mit \texttt{\_Diplomarbeitsvorlage.tcp} bereits
 
 \begin{figure}
     \centering
-    \subfigure[]
-    {
-        \includegraphics[scale=.4]{TeXnicCenterEinstellungen.PNG}
-    }
-    \subfigure[]
-    {
-        \includegraphics[scale=.4]{TeXnicCenterEinstellungenGlossar.PNG}
-    }
-    \caption
-    {
-        (a) Einstellungen für pdflatex, biber und makeindex
-        (b) Einstellungen für makeglossaries
-    }
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\linewidth]{TeXnicCenterEinstellungen.PNG}
+    \caption{Einstellungen für pdflatex, biber und makeindex}
+		\end{subfigure}\hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\linewidth]{TeXnicCenterEinstellungenGlossar.PNG}
+    \caption{Einstellungen für makeglossaries}
+		\end{subfigure}
+		\caption{Einstellungen für TeXnicCenter}
     \label{fig:Settings}
 \end{figure}
 

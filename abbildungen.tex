@@ -115,7 +115,7 @@ vermutlich völliger Unsinn.}
 \section{Abbildungen}
 
 Für die Einbindung von Grafiken in \latex wird die Verwendung des Stan\-dard-Pakets
-\texttt{graphicx}\footcite{Carlisle99} empfohlen 
+\texttt{graphicx}\cite{Carlisle99} empfohlen 
 (wird durch das \texttt{htl}-Paket bereits eingebunden). 
 Folgende Bildformate können verwendet werden:
 %
@@ -319,7 +319,7 @@ einreihige Rollenlager in Abb.~\ref{fig:Bearings}\thinspace(c), so aussehen:
 \end{itemize}
 %
 Für kompliziertere Abbildungen sollte man die Verwendung des 
-\texttt{subcaption}-Pakets \footcite{Cochran95} in Betracht ziehen. Ein Beispiel ist in der Vorlage in Abbildung \ref{fig:Settings} zu finden.
+\texttt{subcaption}-Pakets \cite{Cochran95} in Betracht ziehen. Ein Beispiel ist in der Vorlage in Abbildung \ref{fig:Settings} zu finden.
 
 
 \subsection{Quellenangaben in Captions}
@@ -327,7 +327,7 @@ Für kompliziertere Abbildungen sollte man die Verwendung des
 
 Wenn Bilder, Grafiken oder Tabellen aus anderen Quellen verwendet werden, dann muss ihre Herkunft in jedem Fall klar ersichtlich gemacht werden, und zwar am besten direkt in der Caption.
 Verwendet man beispielsweise eine Grafik aus einem Buch oder einer sonstigen zitierfähigen Publikation, dann sollte man diese in das Literaturverzeichnis aufnehmen und wie üblich zitieren, wie in Abb.\ \ref{fig:Bearings} demonstriert. Da Grafiken floating-Elemente sind, muss statt mit
-\verb!\footcite{..}! die Kombination \verb!\footnotemark! und \verb!\footcitetext! verwendet werden. Weitere Details zu dieser Art von Quellenangaben finden sich in Kap.\ \ref{cha:Literatur}.
+\verb!\cite{..}! die Kombination \verb!\footnotemark! und \verb!\citetext! verwendet werden. Weitere Details zu dieser Art von Quellenangaben finden sich in Kap.\ \ref{cha:Literatur}.
 
 Bei Bildern aus dem Internet ist es hingegen ratsam, die zugehörige Website \emph{nicht} in das Literaturverzeichnis aufnehmen, sondern (mit \verb!\url{..}!) direkt in der Caption oder in einer Fußnote anzugeben (siehe Abschn.\ \ref{sec:OnlineQuellen} und Abbildung \ref{fig:latexinternet}). 
 
@@ -367,10 +367,10 @@ Sollte die Kombination von Caption, Fußnote und Url verwendet werden, muss die 
 \caption[]{Diverse Maschinenelemente.
 Overhang Mounting (a), Straddle Mounting (b),
 einreihiges Rollenlager (c), Schmierung von Rollenlagern (d).
-Aus \citetitle{Faires34}.\footnotemark }
+Aus \citetitle{Faires34}.\cite{Faires34} }
 \label{fig:Bearings}
 \end{figure}
-\footcitetext{Faires34}
+
 
 \begin{figure}
 \centering

@@ -10,7 +10,7 @@
 \graphicspath{{images/}}    % Bilderverzeichnis
 
 
-\include{Settings}
+\usepackage[paper=a4paper,margin=3cm]{geometry}
 
 \makeglossaries
 \loadglsentries{glossary}					%beinhaltet Daten für das Glossar
@@ -77,7 +77,6 @@
 \include{mathematik}
 \include{literatur}
 \include{drucken}
-\include{word}
 \include{schluss}
 
 %%%----------------------------------------------------------
@@ -92,18 +91,6 @@
 %Ausgabe der automatischen Zusatzdaten: Glossar, Index, Literaturverzeichnis
 \clearpage
 \printglossaries
-
-\clearpage
-\chapter*{Index}
-\addcontentsline{toc}{chapter}{Index}
-\printindex[allgemein]
-
-\printindex
-
-\printindex[name]
-
-\printindex[title]
-
 
 %Literaturverzeichnis
 \clearpage

@@ -23,27 +23,23 @@ Zusammenstellung der verwendeten Quellen am \emph{Ende} des Dokuments.
 Wichtig ist, dass jeder Literaturverweis im Text einen entsprechenden
 Eintrag im Literaturverzeichnis hat und umgekehrt.
 
-\section{Finden von Literator}
-
-
-
 \section{Literaturverweise}
 
-\subsection{{\tt citetitle} und {\tt footcite}}
+\subsection{{\tt citetitle} und {\tt cite}}
 
-Für Literaturverweise im laufenden Text verwendet man in \latex die Anweisung
+Für Literaturverweise auf den Titel von Quellen im laufenden Text verwendet man in \latex die Anweisung
 \begin{itemize}
 \item[] \verb!\citetitle{!\textit{Verweise}\verb!}! oder
 \item[] \verb!\citetitle[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
 \end{itemize}
 
 \noindent%
-Zu jedem Verweis muss außerdem noch als Fußnote der genau Verweis mit dem Autor angegeben werden als
+Zu jedem Verweis muss außerdem noch ein Verweis auf die ausführlichen Informationen zu der Quelle im Literaturverzeichnis angegeben werden.
 
 \begin{itemize}
-\item[] \verb!\footcite{!\textit{Verweise}\verb!}! oder
-\item[] \verb!\footcite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}! oder
-\item[] \verb!\footcite[!\textit{Vorwort}\verb!][!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+\item[] \verb!\cite{!\textit{Verweise}\verb!}! oder
+\item[] \verb!\cite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}! oder
+\item[] \verb!\cite[!\textit{Vorwort}\verb!][!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
 \end{itemize}
 
 \noindent%
@@ -54,14 +50,14 @@ werden, wie \zB Kapitel- oder Seitenangaben bei Büchern. Das \textit{Vorwort} g
 
 Einige Beispiele dazu:
 \begin{itemize}
-\item[] \verb!Mehr dazu findet sich in \citetitle{Kopka98}\footcite[][]{Kopka98}.! \newline
-      $\rightarrow$ Mehr dazu findet sich in \citetitle{Kopka98}\footcite[][]{Kopka98}.
-\item[] \verb!Mehr über \emph{Styles} in \citetitle{Kopka98}\footcite[][Kap.\ 3]{Kopka98}.! \newline
-      $\rightarrow$ Mehr über \emph{Styles} in \citetitle{Kopka98}\footcite[][Kap.\ 3]{Kopka98}.
-\item[] \verb!Die Angaben in \citetitle{Ears99}\footcite[][S.\ 274--277]{Ears99} sind falsch.! \newline
-      $\rightarrow$ Die Angaben in \citetitle{Ears99}\footcite[][S.\ 274--277]{Ears99} sind aus meiner Sicht falsch.
-\item[] \verb!überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}!\newline\verb!\footcite[][]{Ears99,Microsoft01,Duden97}.! \newline
-      $\rightarrow$ überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}\footcite[][]{Ears99,Microsoft01,Duden97}.
+\item[] \verb!Mehr dazu findet sich in \citetitle{Kopka98}\cite[][]{Kopka98}.! \newline
+      $\rightarrow$ Mehr dazu findet sich in \citetitle{Kopka98}\cite[][]{Kopka98}.
+\item[] \verb!Mehr über \emph{Styles} in \citetitle{Kopka98}\cite[][Kap.\ 3]{Kopka98}.! \newline
+      $\rightarrow$ Mehr über \emph{Styles} in \citetitle{Kopka98}\cite[][Kap.\ 3]{Kopka98}.
+\item[] \verb!Die Angaben in \citetitle{Ears99}\cite[][S.\ 274--277]{Ears99} sind falsch.! \newline
+      $\rightarrow$ Die Angaben in \citetitle{Ears99}\cite[][S.\ 274--277]{Ears99} sind aus meiner Sicht falsch.
+\item[] \verb!überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}!\newline\verb!\cite[][]{Ears99,Microsoft01,Duden97}.! \newline
+      $\rightarrow$ überholt sind auch \citetitle{Ears99,Microsoft01,Duden97}\cite[][]{Ears99,Microsoft01,Duden97}.
 \end{itemize}
 
 
@@ -71,12 +67,10 @@ Einige Beispiele dazu:
 \subsubsection{Verweise außerhalb des Satzes}
 Literaturverweise sollten innerhalb oder am Ende eines Satzes (vor
 dem Punkt) stehen, nicht \emph{außerhalb}, wie
-hier. \footcite[siehe][]{Oetiker01} $\leftarrow$~FALSCH!
+hier. \cite[siehe][]{Oetiker01} $\leftarrow$~FALSCH!
 
 \subsubsection{Verweis nicht sichtbar}
-Wenn eine Quelle\repeatfootcite{Kopka98} mehrfach in einem Kapitel verwendet wird, müssen alle Stellen gekennzeichnet werden, an denen die Quelle\repeatfootcite{Kopka98} verwendet wird. Ein einfacher Verweis auf die Quelle\repeatfootcite{Kopka98} am Anfang des Kapitels ist nicht ausreichend.
-
-Um mehrfache gleiche Zeilen in den Fußnoten zu vermeiden können Zitate mit dem Befehl \verb|\repeatfootcite{Kopka98}| geschrieben werden, der gleiche Zitate zusammenfasst.
+Wenn eine Quelle\cite{Kopka98} mehrfach in einem Kapitel verwendet wird, müssen alle Stellen gekennzeichnet werden, an denen die Quelle\cite{Kopka98} verwendet wird. Ein einfacher Verweis auf die Quelle\cite{Kopka98} am Anfang des Kapitels ist nicht ausreichend.
 
 \subsubsection{Zitate}
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
@@ -137,9 +131,9 @@ Im Zweifelsfall findet man detailliertere Regeln in jedem guten Buch über wisse
 Für die Erstellung des Literaturverzeichnisses gibt es in \latex zwei
 Möglichkeiten:
 \begin{enumerate}
-\item Das Literaturverzeichnis manuell zu formatieren \footcite[siehe][S.\ 56--57]{Kopka98}.
+\item Das Literaturverzeichnis manuell zu formatieren \cite[siehe][S.\ 56--57]{Kopka98}.
 \item Die Verwendung von BibTeX und einer zugehörigen Literaturdatenbank
-\footcite[siehe][S.\ 245--255]{Kopka98}.
+\cite[siehe][S.\ 245--255]{Kopka98}.
 \end{enumerate}
 Tatsächlich ist die erste Variante nur bei sehr wenigen Literaturangaben interessant.
 Die Arbeit mit BibTeX macht sich hingegen schnell bezahlt und ist zudem wesentlich
@@ -153,7 +147,7 @@ Textdateien von vorgegebener Struktur) ein für \latex geeignetes Literaturverze
 erzeugt. Dabei ist es möglich, aus einer Reihe von verschiedenen Stilvarianten
 (\emph{bibliography styles}) zu wählen.
 Literatur zur Verwendung von BibLaTeX findet man online, \zB in
-\citetitle{Taylor96,Patashnik88}\footcite{Taylor96,Patashnik88}.
+\citetitle{Taylor96,Patashnik88}\cite{Taylor96,Patashnik88}.
 
 Man kann BibLaTeX-Dateien natürlich mit einem Texteditor manuell erstellen, für
 viele Literaturquellen sind auch bereits fertige BibLaTeX-Einträge im Web verfügbar.
@@ -201,19 +195,19 @@ Weitere Beispiele finden sich im übrigen Text \bzw im
 Literaturverzeichnis.
 
 \begin{itemize}
-\item Buch (\texttt{@book})\footcite{BurgerBurge06}
+\item Buch (\texttt{@book})\cite{BurgerBurge06}
 \item Mehrbändige Bücher (\texttt{@mvbook})
 \item Teil eines Buches (\texttt{@inbook})
 \item Buchähnliche Publikation (\texttt{@booklet}) 
-\item Buchbeitrag, Beitrag in einem Sammelband (\texttt{@incollection})\footcite{Ears99}
-\item Konferenzbeitrag, Beitrag in einem Tagungsband (\texttt{@inproceedings})\footcite{Burger87}
-\item Zeitschriftenbeitrag, Journal Paper (\texttt{@article})\footcite{Guttman01}
-\item Dissertation (\texttt{@phdthesis})\footcite{Eberl87}
-\item Diplomarbeit (Universität, \texttt{@mastersthesis})\footcite{Wintersberger00}
-\item Bachelorarbeit (\texttt{@masterthesis} modifiziert)\footcite{Bacher04}
-\item Bericht, Technical Report (\texttt{@techreport})\footcite{Beeler48}
-\item Handbuch, Manual, Online-Dokumentation (\texttt{@manual})\footcite{Microsoft01}
-\item Sonderfälle wie \zB Patente\footcite{PAT07}, Normen\footcite{DIN9241-11}\footcite{DIN9241-110}, Audio-CDs\footcite{Zappa95}, Filme\footcite{Nosferatu}, Persönliche Kommunikation\footcite{Kreisky75} (\texttt{@misc})
+\item Buchbeitrag, Beitrag in einem Sammelband (\texttt{@incollection})\cite{Ears99}
+\item Konferenzbeitrag, Beitrag in einem Tagungsband (\texttt{@inproceedings})\cite{Burger87}
+\item Zeitschriftenbeitrag, Journal Paper (\texttt{@article})\cite{Guttman01}
+\item Dissertation (\texttt{@phdthesis})\cite{Eberl87}
+\item Diplomarbeit (Universität, \texttt{@mastersthesis})\cite{Wintersberger00}
+\item Bachelorarbeit (\texttt{@masterthesis} modifiziert)\cite{Bacher04}
+\item Bericht, Technical Report (\texttt{@techreport})\cite{Beeler48}
+\item Handbuch, Manual, Online-Dokumentation (\texttt{@manual})\cite{Microsoft01}
+\item Sonderfälle wie \zB Patente\cite{PAT07}, Normen\cite{DIN9241-11}\cite{DIN9241-110}, Audio-CDs\cite{Zappa95}, Filme\cite{Nosferatu}, Persönliche Kommunikation\cite{Kreisky75} (\texttt{@misc})
 \item Online Quellen (\texttt{@online})
 \end{itemize}
 
@@ -259,7 +253,7 @@ verwenden, und zwar \emph{ohne} die sonst erforderlichen Klammern (oder Hochkomm
 \end{quote}
 %
 Der richtige Monatsname wird abhängig von der Spracheinstellung für das Dokument automatisch eingesetzt.
-Ein Intervall über \emph{mehrere} Monate kann man in der (etwas eigenartigen) BibTeX-Syntax so angeben (verwendet \zB\ für "`Mai/Juni"' in \citetitle{Guttman01}\footcite{Guttman01}):
+Ein Intervall über \emph{mehrere} Monate kann man in der (etwas eigenartigen) BibTeX-Syntax so angeben (verwendet \zB\ für "`Mai/Juni"' in \citetitle{Guttman01}\cite{Guttman01}):
 \begin{quote}
 \verb!month=MAY # "/" # JUN!
 \end{quote}
@@ -285,4 +279,4 @@ bei einer dritten Auflage. Die richtige Punktuation in der Quellenangabe wird in
 
 \subsubsection{Listing aller Quellen}
 
-Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Literaturverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\footcite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Literaturverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!

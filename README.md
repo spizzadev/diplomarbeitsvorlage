@@ -1,8 +1,34 @@
-Diplomarbeitsvorlage
-====================
+# Diplomarbeitsvorlage — HTL Wiener Neustadt
 
-Diplomarbeitsvorlage der HTL Wiener Neustadt
+Typst-Vorlage für Diplomarbeiten der HTL Wiener Neustadt.
 
-Eine Anleitung zur Verwendung der Diplomarbeit ist auf dem [Wiki](../../wikis) zu finden.
+## Verwendung
 
-Wünsche (z.B. zusätzliche Packages) oder Probleme an scw@htlwrn.ac.at melden oder ein Issue erstellen.
+1. Metadaten in `_Diplomarbeit.typ` eintragen (Titel, Schüler, Betreuer, Abteilung, …)
+2. Kapitel in `chapters/` bearbeiten bzw. eigene erstellen
+3. Kompilieren:
+
+```sh
+typst compile _Diplomarbeit.typ _Diplomarbeit.pdf
+```
+
+Live-Vorschau während des Schreibens:
+
+```sh
+typst watch _Diplomarbeit.typ _Diplomarbeit.pdf
+```
+
+## Voraussetzungen
+
+- [Typst](https://github.com/typst/typst) ≥ 0.14  
+  Arch Linux: `sudo pacman -S typst`
+
+## Struktur
+
+| Datei / Ordner | Inhalt |
+|----------------|--------|
+| `_Diplomarbeit.typ` | Hauptdatei — Metadaten und Kapitelreihenfolge |
+| `htldipl.typ` | Template-Modul (Titelseite, Kopfzeilen, Stile) |
+| `chapters/` | Kapitel-Dateien |
+| `images/` | Bilder und Grafiken |
+| `literatur.bib` | Literatur-Datenbank (BibTeX-Format) |

@@ -11,13 +11,13 @@ und müssen immer mit einer erklärenden Beschriftung (_Caption_) versehen sein.
 
 ```typst
 #figure(
-  image("images/htl.jpeg", width: 75%),
+  image("../images/htl.jpeg", width: 75%),
   caption: [Logo der HTL Wiener Neustadt.],
 ) <fig-htl-logo>
 ```
 
 #figure(
-  image("images/htl.jpeg", width: 40%),
+  image("../images/htl.jpeg", width: 40%),
   caption: [Logo der HTL Wiener Neustadt.],
 ) <fig-htl-logo>
 
@@ -57,8 +57,8 @@ Für ein Float-ähnliches Verhalten (Abbildung oben/unten auf der Seite):
   grid(
     columns: 2,
     gutter: 1cm,
-    figure(image("images/ball-bearing-1.png"), caption: [Overhang]) <fig-sub-a>,
-    figure(image("images/ball-bearing-2.png"), caption: [Straddle]) <fig-sub-b>,
+    figure(image("../images/ball-bearing-1.png"), caption: [Overhang]) <fig-sub-a>,
+    figure(image("../images/ball-bearing-2.png"), caption: [Straddle]) <fig-sub-b>,
   ),
   caption: [Zwei Lagerungsarten im Vergleich.],
 ) <fig-lagerungen>
@@ -68,8 +68,8 @@ Für ein Float-ähnliches Verhalten (Abbildung oben/unten auf der Seite):
   grid(
     columns: 2,
     gutter: 1cm,
-    figure(image("images/ball-bearing-1.png", width: 100%), caption: [Overhang]),
-    figure(image("images/ball-bearing-2.png", width: 100%), caption: [Straddle]),
+    figure(image("../images/ball-bearing-1.png", width: 100%), caption: [Overhang]),
+    figure(image("../images/ball-bearing-2.png", width: 100%), caption: [Straddle]),
   ),
   caption: [Zwei Lagerungsarten im Vergleich.],
 ) <fig-lagerungen>

@@ -109,7 +109,7 @@ Labels werden mit `<label-name>` direkt nach einem Element gesetzt:
 
 == Zielsetzung <sec-ziel>
 
-#figure(image("images/htl.png"), caption: [Das HTL-Logo]) <fig-htl-logo>
+#figure(image("../images/htl.png"), caption: [Das HTL-Logo]) <fig-htl-logo>
 ```
 
 
@@ -131,13 +131,13 @@ referenzierten Elements.
 
 ```typst
 #figure(
-  image("images/htl.jpeg", width: 50%),
+  image("../images/htl.jpeg", width: 50%),
   caption: [Das Logo der HTL Wiener Neustadt],
 ) <fig-htl>
 ```
 
 #figure(
-  image("images/htl.jpeg", width: 30%),
+  image("../images/htl.jpeg", width: 30%),
   caption: [Das Logo der HTL Wiener Neustadt],
 ) <fig-htl>
 
@@ -150,10 +150,10 @@ referenzierten Elements.
     columns: 2,
     gutter: 1em,
     [
-      #figure(image("images/ball-bearing-1.png", width: 100%), caption: [Variante A]) <fig-lager-a>
+      #figure(image("../images/ball-bearing-1.png", width: 100%), caption: [Variante A]) <fig-lager-a>
     ],
     [
-      #figure(image("images/ball-bearing-2.png", width: 100%), caption: [Variante B]) <fig-lager-b>
+      #figure(image("../images/ball-bearing-2.png", width: 100%), caption: [Variante B]) <fig-lager-b>
     ],
   ),
   caption: [Zwei Varianten der Lagerung],

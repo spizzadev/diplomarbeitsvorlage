@@ -71,6 +71,9 @@
 #include "chapters/drucken.typ"
 #include "chapters/schluss.typ"
 
+// ── Dokumentationsformular (4 Seiten) ────────────────────────────────────
+#include "chapters/dokumentation-daten.typ"
+
 // ═══════════════════════════════════════════════════════════════
 // ANHANG
 // ═══════════════════════════════════════════════════════════════

@@ -16,6 +16,7 @@
 // ── Interner Zustand ──────────────────────────────────────────────────────
 #let _section-state  = state("htl-section", "front")   // "front" | "main" | "appendix"
 #let _heading-state  = state("htl-heading", "")         // tracks current chapter name
+#let _htl-meta       = state("htl-meta", none)          // shared metadata for dokumentationsseite()
 
 // ── Seitenzahlen-Anzeige (kontextabhängig) ────────────────────────────────
 #let _page-display() = context counter(page).display()
@@ -205,6 +206,14 @@
   body,
 ) = {
 
+  // Gemeinsame Metadaten für dokumentationsseite() bereitstellen
+  _htl-meta.update((
+    htllogo: htllogo, schule: schule,
+    abteilung: abteilung, schwerpunkt: schwerpunkt,
+    schueler: schueler, abgabejahr: abgabejahr,
+    title: title, betreuer: betreuer,
+  ))
+
   // ── Globale Seiteneinstellungen ──
   set page(
     paper: "a4",
@@ -385,3 +394,181 @@
   inset: (x: 1mm, y: 0.5mm),
   content,
 )
+
+// ── Dokumentationsformular (4 Seiten) ────────────────────────────────────
+// Verwendung: in chapters/dokumentation-daten.typ befüllen und
+//             #include "chapters/dokumentation-daten.typ" in _Diplomarbeit.typ einfügen.
+// Gemeinsame Metadaten (Titel, Schüler, Betreuer etc.) kommen automatisch
+// aus htldipl.with(). Formular-spezifische Felder werden direkt übergeben.
+#let dokumentationsseite(
+  jahrgang:               "",
+  title-en:               "",
+  kooperationspartner:    none,
+  aufgabenstellung:       [],
+  aufgabenstellung-en:    [],
+  realisierung:           [],
+  realisierung-en:        [],
+  ergebnisse:             [],
+  ergebnisse-en:          [],
+  grafik:                 none,
+  grafik-beschreibung:    [],
+  grafik-beschreibung-en: [],
+  preis:                  none,
+  adresse:                [HTBLuVA Wiener Neustadt \ Dr.-Eckener-Gasse~2 \ A~2700 Wiener Neustadt],
+) = context {
+  let d = _htl-meta.get()
+  if d == none { return }
+
+  let s  = 0.5pt
+  let i  = (x: 3mm, y: 2.5mm)
+  let lw = 48mm
+
+  let names    = d.schueler.map(s => s.name).join(linebreak())
+  let pruefer  = if d.betreuer.len() > 0 { d.betreuer.at(0) } else { "" }
+  let av       = if d.betreuer.len() > 1 { d.betreuer.at(1) } else { "" }
+
+  let tall(h, c) = block(height: h, width: 100%, above: 0pt, below: 0pt, c)
+
+  let no-img(msg) = align(center + horizon,
+    text(size: 9pt, style: "italic", fill: rgb(160, 160, 160), msg)
+  )
+
+  // Kopfzeile (entspricht Original: Logo links, Schulname + Abteilung rechts)
+  let hdr(de: true) = table(
+    columns: (36mm, 1fr),
+    stroke: s,
+    inset: i,
+    align: (center + horizon, top + left),
+    image(d.htllogo, width: 33mm),
+    if de [
+      *HÖHERE TECHNISCHE BUNDES- LEHR- UND VERSUCHSANSTALT* \
+      *WIENER NEUSTADT* \
+      Fachrichtung: #d.abteilung \
+      #if d.schwerpunkt != none [Ausbildungsschwerpunkt: #d.schwerpunkt]
+    ] else [
+      *COLLEGE OF ENGINEERING* \
+      *WIENER NEUSTADT* \
+      Department: #d.abteilung \
+      #if d.schwerpunkt != none [Educational Focus: #d.schwerpunkt]
+    ]
+  )
+
+  let doc-title(de: true) = {
+    v(5mm)
+    text(size: 18pt, weight: "bold",
+      if de { "Diplomarbeit Dokumentation" } else { "Diploma Thesis Documentation" }
+    )
+    v(5mm)
+  }
+
+  set page(header: none, footer: none, numbering: none,
+           margin: (x: 22mm, top: 15mm, bottom: 20mm))
+  set text(font: "Noto Sans", size: 10pt)
+
+  // ══ Seite 1: Deutsch, Inhalt ══════════════════════════════════════════════
+  hdr(de: true)
+  doc-title(de: true)
+
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Namen der\ Verfasser/innen], names,
+    [Jahrgang],                   jahrgang,
+    [Schuljahr],                  d.abgabejahr,
+    [Thema der\ Diplomarbeit],    d.title,
+    ..if kooperationspartner != none {
+      ([Kooperationspartner], kooperationspartner)
+    } else { () },
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Aufgabenstellung], tall(36mm, aufgabenstellung),
+    [Realisierung],     tall(36mm, realisierung),
+    [Ergebnisse],       tall(36mm, ergebnisse),
+  )
+  pagebreak()
+
+  // ══ Seite 2: Deutsch, Bild + Unterschriften ═══════════════════════════════
+  hdr(de: true)
+  doc-title(de: true)
+
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Typische Grafik,\ Foto etc.\ (mit Erläuterung)],
+    [
+      #grafik-beschreibung
+      #v(2mm)
+      #rect(width: 100%, height: 100mm, stroke: 0.3pt)[
+        #if grafik != none {
+          align(center + horizon, image(grafik, height: 95mm, fit: "contain"))
+        } else {
+          no-img([Bild der Diplomarbeit einfügen])
+        }
+      ]
+    ],
+    [Teilnahme an\ Wettbewerben,\ Auszeichnungen],
+    tall(22mm, if preis != none { preis } else { [] }),
+    [Möglichkeiten der\ Einsichtnahme\ in die Arbeit],
+    adresse,
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr, 1fr), stroke: s, inset: i, align: top + left,
+    [Approbation],          [Prüfer],  [Abteilungsvorstand],
+    [(Datum, Unterschrift)],[pruefer], [av],
+  )
+  pagebreak()
+
+  // ══ Seite 3: Englisch, Inhalt ═════════════════════════════════════════════
+  hdr(de: false)
+  doc-title(de: false)
+
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Authors],             names,
+    [Form],                jahrgang,
+    [Academic Year],       d.abgabejahr,
+    [Topic],               title-en,
+    ..if kooperationspartner != none {
+      ([Co-operation\ partners], kooperationspartner)
+    } else { () },
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Assignment of tasks], tall(36mm, aufgabenstellung-en),
+    [Realization],         tall(36mm, realisierung-en),
+    [Results],             tall(36mm, ergebnisse-en),
+  )
+  pagebreak()
+
+  // ══ Seite 4: Englisch, Bild + Unterschriften ══════════════════════════════
+  hdr(de: false)
+  doc-title(de: false)
+
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
+    [Illustrative graph,\ photo\ (incl. explanation)],
+    [
+      #grafik-beschreibung-en
+      #v(2mm)
+      #rect(width: 100%, height: 100mm, stroke: 0.3pt)[
+        #if grafik != none {
+          align(center + horizon, image(grafik, height: 95mm, fit: "contain"))
+        } else {
+          no-img([Insert thesis image here])
+        }
+      ]
+    ],
+    [Participation in\ competitions,\ Awards],
+    tall(22mm, if preis != none { preis } else { [] }),
+    [Accessibility of\ diploma thesis],
+    adresse,
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr, 1fr), stroke: s, inset: i, align: top + left,
+    [Approval],       [Examiner],  [Head of Department],
+    [(Date, Sign)],   [pruefer],   [av],
+  )
+}

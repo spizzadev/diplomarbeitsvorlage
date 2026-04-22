@@ -1,7 +1,7 @@
 // htldipl.typ
 // Typst-Vorlage für Diplomarbeiten der HTL Wiener Neustadt
 // Basierend auf htldipl.cls / htl.sty von Wolfgang Schermann (2018)
-// Portiert auf Typst 0.14
+// Portiert auf Typst 0.14 — Maintainer: Markus Spitzer (github.com/spizzadev)
 
 // ── Farben (identisch mit htl.sty color-Option) ───────────────────────────
 #let htl-green    = rgb(0, 153, 0)

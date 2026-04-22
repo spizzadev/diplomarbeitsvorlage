@@ -32,3 +32,8 @@ typst watch _Diplomarbeit.typ _Diplomarbeit.pdf
 | `chapters/` | Kapitel-Dateien |
 | `images/` | Bilder und Grafiken |
 | `literatur.bib` | Literatur-Datenbank (BibTeX-Format) |
+
+## Maintainer
+
+Typst-Port: [Markus Spitzer](https://github.com/spizzadev)  
+Ursprüngliche LaTeX-Vorlage: Wolfgang Schermann (2018)

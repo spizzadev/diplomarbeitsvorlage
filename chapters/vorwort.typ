@@ -3,10 +3,11 @@
 Dies ist die Typst-Dokumentenvorlage für Diplomarbeiten an der HTL Wiener Neustadt,
 basierend auf der LaTeX-Vorlage von Wolfgang Schermann (2018), die ihrerseits auf
 der Vorlage für Abschlussarbeiten an der FH Hagenberg von Dr. Wilhelm Burger basiert.
+Die Portierung auf Typst wurde von Markus Spitzer durchgeführt.
 
 Der Quelltext zu diesem Dokument ist in der jeweils aktuellen Version verfügbar unter
 
-#block(inset: (left: 1cm), `https://github.com/wschermann/Diplomarbeitsvorlage`)
+#block(inset: (left: 1cm), `https://github.com/spizzadev/diplomarbeitsvorlage`)
 
 Trotz großer Mühe enthält dieses Dokument zweifellos Fehler und Unzulänglichkeiten
 — Kommentare, Verbesserungsvorschläge und passende Ergänzungen sind stets willkommen.
@@ -14,9 +15,9 @@ Trotz großer Mühe enthält dieses Dokument zweifellos Fehler und Unzulänglich
 #align(center, table(
   columns: 1,
   stroke: none,
-  [w.schermann\@htlwrn.ac.at],
-  [Wolfgang Schermann MSc],
-  [HTL Wiener Neustadt -- Informatik],
+  [markus\@spizza.cc],
+  [Markus Spitzer],
+  [HTL Wiener Neustadt],
   [Austria],
 ))
 

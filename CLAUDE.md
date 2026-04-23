@@ -30,7 +30,7 @@ Required tool: `typst` (install via `sudo pacman -S typst` on Arch Linux, or dow
 
 ### Template Module
 
-- **`htldipl.typ`** — Main template module. Defines `htldipl()` (title page, oath page, TOC, global styles), `mainmatter()` (switches to arabic page numbers + heading numbering), `appendix-matter()` (switches to letter-based heading numbering), and helpers (`print-glossary`, `trennstrich`, `frametext`, `kurzfassung`, `abstract-en`).
+- **`htldipl.typ`** — Main template module. Defines `htldipl()` (title page, oath page, TOC, global styles), `mainmatter()` (switches to arabic page numbers + heading numbering), `appendix-matter()` (switches to letter-based heading numbering), `dokumentationsseite()` (4-page official documentation form), and helpers (`print-glossary`, `trennstrich`, `frametext`, `kurzfassung`, `abstract-en`).
 
 ### Content Structure
 
@@ -49,6 +49,7 @@ Chapter files in `chapters/`, loaded in order from `_Diplomarbeit.typ`:
 | `chapters/literatur.typ` | Citations guide |
 | `chapters/drucken.typ` | Printing and formatting requirements |
 | `chapters/schluss.typ` | Conclusion |
+| `chapters/dokumentation-daten.typ` | Documentation form data — students fill this in |
 | `chapters/anhang_b.typ` … | Appendices |
 
 ### Data Files
@@ -61,5 +62,8 @@ Chapter files in `chapters/`, loaded in order from `_Diplomarbeit.typ`:
 - `#show: mainmatter()` — must be called as a show rule (not `#mainmatter()`) so `set` rules propagate to document scope
 - `#show: appendix-matter()` — same requirement
 - The `htldipl()` function uses `_section-state` (a Typst `state`) to track frontmatter / mainmatter / appendix and drive heading prefixes ("Kapitel N" / "Anhang X") and page numbering
+- `htldipl()` stores shared thesis metadata (title, students, advisors, school logo, etc.) in `_htl-meta` state so `dokumentationsseite()` can access it without duplication
+- `dokumentationsseite()` is called via `#include "chapters/dokumentation-daten.typ"` — students fill in form-specific data (jahrgang, aufgabenstellung, etc.) in that file only; do not put these params in `htldipl.with()`
+- `chapters/anhang_d.typ` embeds `_Diplomarbeit.typ` source verbatim via `#raw(read(...))` — avoid putting form content inline in `_Diplomarbeit.typ` or it appears duplicated in the appendix listing
 - Bibliography backend is native Typst — no external tools required
 - `color: true` enables colored syntax highlighting; `color: false` for black/white print

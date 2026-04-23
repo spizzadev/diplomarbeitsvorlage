@@ -1,5 +1,10 @@
 = Chronologische Liste der Änderungen
 
+/ 2026/04: Dokumentationsformular in Typst nachgebaut.
+  - `dokumentationsseite()` in `htldipl.typ` erzeugt das offizielle 4-seitige Formular direkt in Typst (kein PDF-Merge mehr notwendig)
+  - Formular-Daten werden in `chapters/dokumentation-daten.typ` ausgefüllt, nicht in `_Diplomarbeit.typ`
+  - Gemeinsame Metadaten (Titel, Schüler, Betreuer, …) werden über `_htl-meta`-State aus `htldipl.with()` weitergegeben
+
 / 2024/04: Portierung der LaTeX-Vorlage auf Typst 0.14.
   - Vollständige Neuerstellung als Typst-Template (`htldipl.typ`)
   - Alle Kapitel von LaTeX nach Typst konvertiert

@@ -5,8 +5,9 @@ Typst-Vorlage für Diplomarbeiten der HTL Wiener Neustadt.
 ## Verwendung
 
 1. Metadaten in `_Diplomarbeit.typ` eintragen (Titel, Schüler, Betreuer, Abteilung, …)
-2. Kapitel in `chapters/` bearbeiten bzw. eigene erstellen
-3. Kompilieren:
+2. Dokumentationsformular in `chapters/dokumentation-daten.typ` ausfüllen (Jahrgang, Aufgabenstellung, Ergebnisse, …)
+3. Kapitel in `chapters/` bearbeiten bzw. eigene erstellen
+4. Kompilieren:
 
 ```sh
 typst compile _Diplomarbeit.typ _Diplomarbeit.pdf
@@ -28,7 +29,8 @@ typst watch _Diplomarbeit.typ _Diplomarbeit.pdf
 | Datei / Ordner | Inhalt |
 |----------------|--------|
 | `_Diplomarbeit.typ` | Hauptdatei — Metadaten und Kapitelreihenfolge |
-| `htldipl.typ` | Template-Modul (Titelseite, Kopfzeilen, Stile) |
+| `htldipl.typ` | Template-Modul (Titelseite, Kopfzeilen, Stile, Dokumentationsformular) |
+| `chapters/dokumentation-daten.typ` | Dokumentationsformular-Daten (von Schülern auszufüllen) |
 | `chapters/` | Kapitel-Dateien |
 | `images/` | Bilder und Grafiken |
 | `literatur.bib` | Literatur-Datenbank (BibTeX-Format) |

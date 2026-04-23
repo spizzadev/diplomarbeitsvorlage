@@ -18,7 +18,7 @@
 #show: htldipl.with(
   title:       "Entwurf eines Versuchstandes für Kreiselpumpen",
   abteilung:   "Maschineningenieurwesen",
-  schwerpunkt: "Ausbildungsschwerpunkt Automatisierungstechnik",
+  schwerpunkt: "Automatisierungstechnik",
   // schwerpunkt: none,  // auskommentieren wenn kein Schwerpunkt vorhanden
   studienort:  "Wiener Neustadt",
   schule:      "HTBLuVA Wiener Neustadt",

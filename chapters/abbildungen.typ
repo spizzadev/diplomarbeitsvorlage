@@ -174,7 +174,7 @@ int main(void) {
 
 === Code als nummerierte Abbildung mit Caption
 
-```typst
+````typst
 #figure(
   ```java
   public class Beispiel {
@@ -185,7 +185,7 @@ int main(void) {
   ```,
   caption: [Einfaches Java-Programm.],
 ) <lst-java>
-```
+````
 
 #figure(
   ```java

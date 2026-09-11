@@ -17,9 +17,7 @@
 // ── Template anwenden ─────────────────────────────────────────────────────
 #show: htldipl.with(
   title:       "Entwurf eines Versuchstandes für Kreiselpumpen",
-  abteilung:   "Maschineningenieurwesen",
-  schwerpunkt: "Automatisierungstechnik",
-  // schwerpunkt: none,  // auskommentieren wenn kein Schwerpunkt vorhanden
+  abteilung:   "Informatik",
   studienort:  "Wiener Neustadt",
   schule:      "HTBLuVA Wiener Neustadt",
   schullogo:   "images/htl.jpeg",

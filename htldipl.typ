@@ -51,7 +51,7 @@
 
 // ── Titelseite ────────────────────────────────────────────────────────────
 #let _title-page(
-  title, abteilung, schwerpunkt,
+  title, abteilung,
   studienort, schule, schullogo, htllogo,
   abgabejahr, schueler, betreuer,
 ) = {
@@ -70,10 +70,6 @@
       #text(size: 14pt, weight: "bold", schule)
       #linebreak()
       #text(size: 10pt, [Höhere Lehranstalt für #abteilung])
-      #if schwerpunkt != none [
-        #linebreak()
-        #text(size: 10pt, schwerpunkt)
-      ]
     ],
     image(htllogo, width: 28mm),
   )
@@ -192,7 +188,6 @@
 #let htldipl(
   title:       "Titel der Diplomarbeit",
   abteilung:   "Abteilung??",
-  schwerpunkt: none,
   studienort:  "Wiener Neustadt",
   schule:      "HTBLuVA Wiener Neustadt",
   schullogo:   "images/htl.jpeg",
@@ -209,7 +204,7 @@
   // Gemeinsame Metadaten für dokumentationsseite() bereitstellen
   _htl-meta.update((
     htllogo: htllogo, schule: schule,
-    abteilung: abteilung, schwerpunkt: schwerpunkt,
+    abteilung: abteilung,
     schueler: schueler, abgabejahr: abgabejahr,
     title: title, betreuer: betreuer,
   ))
@@ -312,7 +307,7 @@
 
   // ── Titelseite & Eidesstattliche Erklärung ──
   _title-page(
-    title, abteilung, schwerpunkt,
+    title, abteilung,
     studienort, schule, schullogo, htllogo,
     abgabejahr, schueler, betreuer,
   )
@@ -428,6 +423,14 @@
   let av       = if d.betreuer.len() > 1 { d.betreuer.at(1) } else { "" }
 
   let tall(h, c) = block(height: h, width: 100%, above: 0pt, below: 0pt, c)
+  let sig(top-label, bottom-label) = block(height: 26mm, width: 100%,
+    above: 0pt, below: 0pt,
+    {
+      text(size: 11pt, top-label)
+      v(1fr)
+      text(size: 8.5pt, bottom-label)
+    }
+  )
 
   let no-img(msg) = align(center + horizon,
     text(size: 9pt, style: "italic", fill: rgb(160, 160, 160), msg)
@@ -438,19 +441,18 @@
     columns: (36mm, 1fr),
     stroke: s,
     inset: i,
-    align: (center + horizon, top + left),
-    image(d.htllogo, width: 33mm),
+    align: center + horizon,
+    table.cell(rowspan: 2, image(d.htllogo, width: 33mm)),
     if de [
       *HÖHERE TECHNISCHE BUNDES- LEHR- UND VERSUCHSANSTALT* \
-      *WIENER NEUSTADT* \
-      Fachrichtung: #d.abteilung \
-      #if d.schwerpunkt != none [Ausbildungsschwerpunkt: #d.schwerpunkt]
+      *WIENER NEUSTADT*
     ] else [
       *COLLEGE OF ENGINEERING* \
-      *WIENER NEUSTADT* \
-      Department: #d.abteilung \
-      #if d.schwerpunkt != none [Educational Focus: #d.schwerpunkt]
-    ]
+      *WIENER NEUSTADT*
+    ],
+    table.cell(align: left + horizon,
+      if de [Fachrichtung: #d.abteilung] else [Department: #d.abteilung]
+    ),
   )
 
   let doc-title(de: true) = {
@@ -506,16 +508,25 @@
         }
       ]
     ],
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
     [Teilnahme an\ Wettbewerben,\ Auszeichnungen],
     tall(22mm, if preis != none { preis } else { [] }),
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
     [Möglichkeiten der\ Einsichtnahme\ in die Arbeit],
     adresse,
   )
   v(3mm)
   table(
     columns: (lw, 1fr, 1fr), stroke: s, inset: i, align: top + left,
-    [Approbation],          [Prüfer],  [Abteilungsvorstand],
-    [(Datum, Unterschrift)],[pruefer], [av],
+    sig([Approbation], text(size: 10pt)[(Datum, Unterschrift)]),
+    sig([Prüfer], pruefer),
+    sig([Abteilungsvorstand], av),
   )
   pagebreak()
 
@@ -560,15 +571,24 @@
         }
       ]
     ],
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
     [Participation in\ competitions,\ Awards],
     tall(22mm, if preis != none { preis } else { [] }),
+  )
+  v(3mm)
+  table(
+    columns: (lw, 1fr), stroke: s, inset: i, align: (top + left, top + left),
     [Accessibility of\ diploma thesis],
     adresse,
   )
   v(3mm)
   table(
     columns: (lw, 1fr, 1fr), stroke: s, inset: i, align: top + left,
-    [Approval],       [Examiner],  [Head of Department],
-    [(Date, Sign)],   [pruefer],   [av],
+    sig([Approval], text(size: 10pt)[(Date, Sign)]),
+    sig([Examiner], pruefer),
+    sig([Head of Department], av),
   )
 }

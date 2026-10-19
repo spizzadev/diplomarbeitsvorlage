@@ -68,7 +68,7 @@ Alle Felder im Aufruf `#show: htldipl.with( … )`:
 | `schueler` | Liste von Dictionaries | ja | `()` | 1–5 Einträge, je `(name: …, evidenz: …, subthema: …)` — siehe unten |
 | `lang` | `"de"` / `"en"` | nein | `"de"` | Dokumentsprache: Trennregeln, automatische Überschriften, Kopfzeilen des Dokumentationsformulars |
 | `color` | `true` / `false` | nein | `true` | Hintergrund von Code-Blöcken: `true` = grau hinterlegt, `false` = weiß (Druck). Syntax-Highlighting bleibt in beiden Fällen farbig |
-| `twoside` | `true` / `false` | nein | `false` | Vorgesehen für doppelseitigen Satz — im Template derzeit **ohne Wirkung**, Ränder und Kopfzeilen sind auf allen Seiten gleich |
+| `twoside` | `true` / `false` | nein | `false` | Doppelseitiger Satz: Bundsteg innen 3,5 cm / außen 2,5 cm, Seitenzahl in der Kopfzeile außen (gerade Seiten links, ungerade rechts). Kapitel beginnen nicht automatisch auf rechten Seiten, Leerseiten fügt das Template nicht ein |
 
 Ein Eintrag in `schueler`:
 

@@ -13,6 +13,11 @@
 #let htl-link-red = rgb(102, 38, 38)
 #let htl-link-blue= rgb(0, 0, 128)
 
+// ── Schriften ─────────────────────────────────────────────────────────────
+// Serifenlose Schrift für Kopfzeilen, Kapitelpräfix und Formular. Noto Sans ist
+// nicht überall installiert, daher Fallbacks (sonst Warnung und Ersatzschrift).
+#let _sans-fonts = ("Noto Sans", "Liberation Sans", "DejaVu Sans")
+
 // ── Interner Zustand ──────────────────────────────────────────────────────
 #let _section-state  = state("htl-section", "front")   // "front" | "main" | "appendix"
 #let _heading-state  = state("htl-heading", "")         // tracks current chapter name
@@ -34,32 +39,36 @@
 // ── Seitenzahlen-Anzeige (kontextabhängig) ────────────────────────────────
 #let _page-display() = context counter(page).display()
 
+// ── Kapitelanfang? ────────────────────────────────────────────────────────
+// Physische Seite vergleichen, nicht den Seitenzähler: Vorspann (i, ii, …) und
+// Hauptteil (1, 2, …) teilen sich Zählerwerte, dadurch bekamen Vorspannseiten
+// fälschlich Kapitelanfangs-Layout (keine Kopfzeile, Zahl in der Fußzeile).
+#let _on-chapter-start() = {
+  let page-now = here().page()
+  query(heading.where(level: 1)).any(h => h.location().page() == page-now)
+}
+
 // ── Kopfzeile: Kapitelname links, Seitenzahl rechts ──────────────────────
-#let _make-header() = context {
+// Bei twoside=true außen: ungerade Seiten Zahl rechts, gerade Seiten links
+// (Kapitelname dann jeweils auf der Innenseite).
+#let _make-header(twoside: false) = context {
   // Auf Seiten, auf denen ein Level-1-Heading beginnt, keine Kopfzeile (plain style)
-  let loc = here()
-  let cur = counter(page).at(loc)
-  let h1s = query(heading.where(level: 1))
-  let on-chapter-start = h1s.any(h => counter(page).at(h.location()) == cur)
-  if on-chapter-start { return none }
+  if _on-chapter-start() { return none }
 
   let heading-text = _heading-state.get()
-  grid(
-    columns: (1fr, auto),
-    align: (left + horizon, right + horizon),
-    text(font: "Noto Sans", size: 10pt, heading-text),
-    text(font: "Noto Sans", size: 10pt, _page-display()),
-  )
+  let name = text(font: _sans-fonts, size: 10pt, heading-text)
+  let num  = text(font: _sans-fonts, size: 10pt, _page-display())
+  if twoside and calc.even(here().page()) {
+    grid(columns: (auto, 1fr), align: (left + horizon, right + horizon), num, name)
+  } else {
+    grid(columns: (1fr, auto), align: (left + horizon, right + horizon), name, num)
+  }
 }
 
 // ── Fußzeile: nur auf Kapitelanfangsseiten zentrierte Seitenzahl ──────────
 #let _make-footer() = context {
-  let loc = here()
-  let cur = counter(page).at(loc)
-  let h1s = query(heading.where(level: 1))
-  let on-chapter-start = h1s.any(h => counter(page).at(h.location()) == cur)
-  if not on-chapter-start { return none }
-  align(center, text(font: "Noto Sans", size: 10pt, _page-display()))
+  if not _on-chapter-start() { return none }
+  align(center, text(font: _sans-fonts, size: 10pt, _page-display()))
 }
 
 // ── Titelseite ────────────────────────────────────────────────────────────
@@ -228,8 +237,8 @@
   // ── Globale Seiteneinstellungen ──
   set page(
     paper: "a4",
-    margin: 3cm,
-    header: _make-header(),
+    margin: if twoside { (inside: 3.5cm, outside: 2.5cm, y: 3cm) } else { 3cm },
+    header: _make-header(twoside: twoside),
     footer: _make-footer(),
     numbering: "i",
   )
@@ -269,10 +278,10 @@
       let s = _section-state.get()
       let num = counter(heading).at(it.location()).first()
       if s == "main" and it.numbering != none {
-        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [#kapitel #num]))
+        block(text(size: 14pt, weight: "bold", font: _sans-fonts, [#kapitel #num]))
         v(3mm)
       } else if s == "appendix" and it.numbering != none {
-        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [#anhang #numbering("A", num)]))
+        block(text(size: 14pt, weight: "bold", font: _sans-fonts, [#anhang #numbering("A", num)]))
         v(3mm)
       }
     }
@@ -530,7 +539,7 @@
 
   set page(header: none, footer: none, numbering: none,
            margin: (x: 22mm, top: 15mm, bottom: 20mm))
-  set text(font: "Noto Sans", size: 10pt)
+  set text(font: _sans-fonts, size: 10pt)
 
   // ══ Seite 1: Deutsch, Inhalt ══════════════════════════════════════════════
   hdr(de: true)

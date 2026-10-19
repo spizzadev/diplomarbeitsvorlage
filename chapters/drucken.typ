@@ -10,8 +10,13 @@ Typst erzeugt direkt PDF-Dokumente in einem einzigen Kompiliervorgang:
 typst compile _Diplomarbeit.typ _Diplomarbeit.pdf
 ```
 
-Es sind keine Zwischenformate (DVI, PS) erforderlich. Das erzeugte PDF entspricht
-dem PDF/A-Standard und ist für den Druck optimiert.
+Es sind keine Zwischenformate (DVI, PS) erforderlich. Alle Schriften werden in das PDF
+eingebettet. Standardmäßig ist das Ergebnis _kein_ PDF/A; wird eine Archivierungsform
+verlangt, erzeugt man sie mit:
+
+```sh
+typst compile --pdf-standard a-2b _Diplomarbeit.typ _Diplomarbeit.pdf
+```
 
 
 == Drucken

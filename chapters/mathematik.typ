@@ -32,12 +32,14 @@ $ a^2 + b^2 = c^2 $ <eq-pythagoras>
 
 Verweis: @eq-pythagoras zeigt den Satz des Pythagoras.
 
-Ohne Nummerierung:
+Das Template nummeriert _alle_ abgesetzten Gleichungen (auch ohne Label). Eine einzelne
+Gleichung ohne Nummer erhält man mit `math.equation`:
+
 ```typst
-$ E = m c^2 $   // keine Nummerierung da kein Label
+#math.equation(block: true, numbering: none, $ E = m c^2 $)
 ```
 
-$ E = m c^2 $
+#math.equation(block: true, numbering: none, $ E = m c^2 $)
 
 
 == Grundlegende Syntax

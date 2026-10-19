@@ -71,8 +71,11 @@ Wie in @Lamport94 beschrieben, ist LaTeX ein mächtiges Werkzeug.
 In `_Diplomarbeit.typ` wird das Literaturverzeichnis mit folgendem Befehl erzeugt:
 
 ```typst
-#bibliography("literatur.bib", style: "ieee", title: "Literaturverzeichnis")
+#bibliography("literatur.bib", style: "ieee")
 ```
+
+Die Überschrift ("Literaturverzeichnis" bzw. "Bibliography" bei `lang: "en"`) setzt das
+Template automatisch; nur bei Bedarf mit `title: [...]` überschreiben.
 
 Der Stil `"ieee"` erzeugt numerische Verweise ([1], [2], ...) entsprechend dem
 IEEE-Standard. Weitere verfügbare Stile: `"apa"`, `"chicago-author-date"`, `"mla"`,

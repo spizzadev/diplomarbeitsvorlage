@@ -21,7 +21,7 @@ dem PDF/A-Standard und ist für den Druck optimiert.
 Die Diplomarbeit sollte in der Endfassung unbedingt auf einem qualitativ hochwertigen
 Laserdrucker ausgedruckt werden. Ausdrucke mit Tintenstrahldruckern sind _nicht_
 ausreichend. Auch das verwendete Papier sollte von guter Qualität (holzfrei) und
-üblicher Stärke (mind. $80 upright("g")/upright("m")^2$) sein.
+üblicher Stärke (mind. 80 g/m²) sein.
 
 Falls _farbige_ Seiten notwendig sind, sollten diese einzeln auf einem Farb-Laserdrucker
 ausgedruckt werden und dem Dokument beigefügt werden.
@@ -80,4 +80,4 @@ Falls ein elektronischer Datenträger beigelegt wird, ist Folgendes zu beachten:
   und so zu entnehmen sein, dass die Hülle dabei _nicht_ zerstört wird.
 + Der Datenträger muss so beschriftet sein, dass er der Diplomarbeit eindeutig
   zuzuordnen ist — am besten durch ein gedrucktes Label.
-+ Nützlich ist auch ein grobes Verzeichnis der Inhalte des Datenträgers (wie in Anhang B).
++ Nützlich ist auch ein grobes Verzeichnis der Inhalte des Datenträgers (wie in @app-cdrom).

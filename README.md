@@ -84,7 +84,7 @@ Ebenfalls in `_Diplomarbeit.typ`:
 |--------|-----|
 | `#let glossary-entries = ( … )` | Glossar: Liste von Paaren `("Begriff", "Erklärung")`. Ausgabe am Dokumentende durch `#print-glossary(glossary-entries)` — Zeile löschen, wenn kein Glossar gewünscht |
 | `#include`-Zeilen | Welche Kapitel in welcher Reihenfolge erscheinen |
-| `#bibliography("literatur.bib", style: "ieee", title: "Literaturverzeichnis")` | Quelldatei, Zitierstil (z. B. `"ieee"`, `"apa"`, `"iso-690-numeric"`) und Überschrift des Literaturverzeichnisses |
+| `#bibliography("literatur.bib", style: "ieee")` | Quelldatei und Zitierstil (z. B. `"ieee"`, `"apa"`, `"iso-690-numeric"`). Die Überschrift („Literaturverzeichnis“ bzw. „Bibliography“) setzt das Template passend zu `lang`; mit `title: [...]` überschreibbar |
 
 Nicht verschieben: `#show: mainmatter()` startet den Hauptteil (arabische Seitenzahlen ab 1,
 nummerierte Kapitel), `#show: appendix-matter()` startet den Anhang (Buchstaben-Nummerierung).

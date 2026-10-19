@@ -1,4 +1,5 @@
 = Chronologische Liste der Änderungen
+<app-changes>
 
 / 2026/04: Dokumentationsformular in Typst nachgebaut.
   - `dokumentationsseite()` in `htldipl.typ` erzeugt das offizielle 4-seitige Formular direkt in Typst (kein PDF-Merge mehr notwendig)

@@ -65,5 +65,7 @@ Chapter files in `chapters/`, loaded in order from `_Diplomarbeit.typ`:
 - `htldipl()` stores shared thesis metadata (title, students, advisors, school logo, etc.) in `_htl-meta` state so `dokumentationsseite()` can access it without duplication
 - `dokumentationsseite()` is called via `#include "chapters/dokumentation-daten.typ"` — students fill in form-specific data (jahrgang, aufgabenstellung, etc.) in that file only; do not put these params in `htldipl.with()`
 - `chapters/anhang_d.typ` embeds `_Diplomarbeit.typ` source verbatim via `#raw(read(...))` — avoid putting form content inline in `_Diplomarbeit.typ` or it appears duplicated in the appendix listing
+- Localization: Typst's auto-generated strings (figure/table supplements, bibliography title) follow `text.lang`, but `datetime.display()` always yields English month names. Title page, oath page and dates therefore use the German `_heute-de()` helper and stay German (per HTL rules); the "Kapitel"/"Anhang" prefix, the heading supplements for `@label` references (`_heading-supplement`) and the bibliography title follow the `lang` parameter
+- Reference chapters/appendices by label (`@cha-drucken`, `@app-cdrom`) instead of hard-coding "Kapitel N"/"Anhang X" — appendix letters shift depending on whether an `anhang_a.typ` is included
 - Bibliography backend is native Typst — no external tools required
 - `color: true` enables colored syntax highlighting; `color: false` for black/white print

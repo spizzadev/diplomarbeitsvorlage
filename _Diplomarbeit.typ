@@ -88,4 +88,4 @@
 
 #print-glossary(glossary-entries)
 
-#bibliography("literatur.bib", style: "ieee", title: "Literaturverzeichnis")
+#bibliography("literatur.bib", style: "ieee")

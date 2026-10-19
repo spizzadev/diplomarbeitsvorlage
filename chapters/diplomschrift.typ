@@ -1,4 +1,5 @@
 = Die Diplomschrift
+<cha-diplomschrift>
 
 == Elemente der Diplomschrift
 

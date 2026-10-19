@@ -18,6 +18,19 @@
 #let _heading-state  = state("htl-heading", "")         // tracks current chapter name
 #let _htl-meta       = state("htl-meta", none)          // shared metadata for dokumentationsseite()
 
+// ── Datum in deutscher Schreibweise ───────────────────────────────────────
+// datetime.display() liefert Monatsnamen immer auf Englisch ("October"),
+// unabhängig von text.lang. Titelseite und Erklärung sind laut Vorgabe immer
+// deutsch, daher eigene Monatsnamen (österreichisch: "Jänner").
+#let _monate-de = (
+  "Jänner", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Dezember",
+)
+#let _heute-de() = {
+  let d = datetime.today()
+  str(d.day()) + ". " + _monate-de.at(d.month() - 1) + " " + str(d.year())
+}
+
 // ── Seitenzahlen-Anzeige (kontextabhängig) ────────────────────────────────
 #let _page-display() = context counter(page).display()
 
@@ -57,6 +70,8 @@
 ) = {
   set page(header: none, footer: none, numbering: none)
   set par(justify: false)
+  // Titelseite ist laut Vorgabe immer deutsch (auch bei englischer Arbeit)
+  set text(lang: "de", region: "AT")
 
   // ── Kopfbereich: Logo | Schulname | HTL-Logo ──
   grid(
@@ -120,7 +135,7 @@
 
   v(1fr)
 
-  text(size: 12pt, [#studienort, am #datetime.today().display("[day]. [month repr:long] [year]")])
+  text(size: 12pt, [#studienort, am #_heute-de()])
   v(3mm)
   line(length: 100%, stroke: 0.5pt)
   v(3mm)
@@ -137,6 +152,7 @@
 
 // ── Eidesstattliche Erklärung ─────────────────────────────────────────────
 #let _oath-page(studienort, schueler) = {
+  set text(lang: "de", region: "AT")
   heading(level: 1, numbering: none, [Eidesstattliche Erklärung])
 
   par[Hiermit erkläre ich an Eides statt, dass ich die vorliegende Arbeit
@@ -145,7 +161,7 @@
   und inhaltlich entnommenen Stellen als solche erkenntlich gemacht habe.]
 
   v(8mm)
-  text(studienort + ", am " + datetime.today().display("[day]. [month repr:long] [year]"))
+  text(studienort + ", am " + _heute-de())
   v(10mm)
 
   text(size: 12pt, weight: "bold", [Verfasser / Verfasserinnen:])
@@ -228,6 +244,10 @@
   set par(justify: true, leading: 0.65em)
   set heading(numbering: none)
 
+  // Bezeichnungen der Präfixzeile ("Kapitel 3" / "Anhang A")
+  let kapitel = if lang == "de" [Kapitel] else [Chapter]
+  let anhang  = if lang == "de" [Anhang] else [Appendix]
+
   // ── Kapitel-Styling und Zustandsverwaltung (level 1) ──
   show heading.where(level: 1): it => {
     // Kapitelname für Kopfzeile aktualisieren
@@ -249,10 +269,10 @@
       let s = _section-state.get()
       let num = counter(heading).at(it.location()).first()
       if s == "main" and it.numbering != none {
-        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [Kapitel #num]))
+        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [#kapitel #num]))
         v(3mm)
       } else if s == "appendix" and it.numbering != none {
-        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [Anhang #numbering("A", num)]))
+        block(text(size: 14pt, weight: "bold", font: "Noto Sans", [#anhang #numbering("A", num)]))
         v(3mm)
       }
     }
@@ -305,6 +325,10 @@
   // ── Mathematik ──
   set math.equation(numbering: "(1)")
 
+  // ── Literaturverzeichnis ──
+  // Typst-Standardtitel im Deutschen wäre "Bibliographie".
+  set bibliography(title: if lang == "de" [Literaturverzeichnis] else [Bibliography])
+
   // ── Titelseite & Eidesstattliche Erklärung ──
   _title-page(
     title, abteilung,
@@ -325,15 +349,36 @@
   body
 }
 
+// ── Supplement für Querverweise auf Überschriften ─────────────────────────
+// @label auf ein Kapitel → "Kapitel 3", auf einen Anhang → "Anhang A", auf
+// Unterabschnitte → "Abschnitt 3.1". Ohne eigenes Supplement setzt Typst bei
+// jeder Überschrift "Abschnitt" ein, während die Überschriften selbst
+// "Kapitel N" tragen. Sprache folgt text.lang an der Stelle des Verweises.
+// (Die Supplement-Funktion kennt `level` noch nicht, daher show-set je Ebene.)
+#let _heading-supplements(chapter-de, chapter-en) = body => {
+  show heading.where(level: 1): set heading(supplement: context {
+    if text.lang == "de" { chapter-de } else { chapter-en }
+  })
+  show heading.where(level: 2).or(heading.where(level: 3)).or(heading.where(level: 4)): set heading(supplement: context {
+    if text.lang == "de" [Abschnitt] else [Section]
+  })
+  body
+}
+
 // ── Übergang zum Hauptteil ────────────────────────────────────────────────
 // Verwendung: #show: mainmatter()
 #let mainmatter() = body => {
   _section-state.update("main")
-  counter(page).update(1)
-  counter(heading).update(0)
   set page(numbering: "1")
   set heading(numbering: "1.1")
+  show: _heading-supplements([Kapitel], [Chapter])
   pagebreak()
+  // Zähler erst auf der neuen Seite zurücksetzen: Steht das update vor dem
+  // pagebreak, landet es noch auf der letzten Vorspannseite (Abstract) — der
+  // Hauptteil beginnt dann mit Seite 2 und die Abstract-Seite verliert ihre
+  // Seitenzahl.
+  counter(page).update(1)
+  counter(heading).update(0)
   body
 }
 
@@ -343,6 +388,7 @@
   _section-state.update("appendix")
   counter(heading).update(0)
   set heading(numbering: "A.1")
+  show: _heading-supplements([Anhang], [Appendix])
   pagebreak()
   body
 }
@@ -531,6 +577,8 @@
   pagebreak()
 
   // ══ Seite 3: Englisch, Inhalt ═════════════════════════════════════════════
+  // englische Silbentrennung und Anführungszeichen für die englischen Seiten
+  set text(lang: "en", region: "US")
   hdr(de: false)
   doc-title(de: false)
 

@@ -1,4 +1,5 @@
 = Quelltext der Hauptdatei
+<app-source>
 
 Der folgende Quelltext ist die Hauptdatei `_Diplomarbeit.typ` dieser Vorlage.
 Er dient als Referenz und Ausgangspunkt für die eigene Diplomarbeit.

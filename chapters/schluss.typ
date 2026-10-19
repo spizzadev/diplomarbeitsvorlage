@@ -1,4 +1,5 @@
 = Schlussbemerkungen
+<cha-schluss>
 
 An dieser Stelle sollte eine Zusammenfassung der Diplomarbeit stehen, in der auch auf
 den Entstehungsprozess, persönliche Erfahrungen, Probleme bei der Durchführung,

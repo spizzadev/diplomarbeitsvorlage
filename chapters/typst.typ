@@ -145,20 +145,18 @@ referenzierten Elements.
 === Subfiguren (mehrere Bilder nebeneinander)
 
 ```typst
+#import "../htldipl.typ": subfigure, subfigures
+
 #figure(
-  grid(
-    columns: 2,
-    gutter: 1em,
-    [
-      #figure(image("../images/ball-bearing-1.png", width: 100%), caption: [Variante A]) <fig-lager-a>
-    ],
-    [
-      #figure(image("../images/ball-bearing-2.png", width: 100%), caption: [Variante B]) <fig-lager-b>
-    ],
+  subfigures(
+    subfigure(image("../images/ball-bearing-1.png", width: 100%), caption: [Variante A]) <fig-lager-a>,
+    subfigure(image("../images/ball-bearing-2.png", width: 100%), caption: [Variante B]) <fig-lager-b>,
   ),
   caption: [Zwei Varianten der Lagerung],
 ) <fig-lager>
 ```
+
+Die Teilbilder werden mit „(a)“, „(b)“ beschriftet (siehe @cha-abbildungen).
 
 === Bildformate
 

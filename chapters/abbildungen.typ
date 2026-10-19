@@ -52,24 +52,27 @@ Für ein Float-ähnliches Verhalten (Abbildung oben/unten auf der Seite):
 
 === Zwei Bilder nebeneinander (Subfiguren)
 
+Das Template stellt dafür `subfigures()` und `subfigure()` bereit. Die Teilbilder werden
+mit „(a)“, „(b)“ beschriftet, die Gesamtabbildung behält ihre fortlaufende Nummer:
+
 ```typst
+#import "../htldipl.typ": subfigure, subfigures
+
 #figure(
-  grid(
-    columns: 2,
-    gutter: 1cm,
-    figure(image("../images/ball-bearing-1.png"), caption: [Overhang]) <fig-sub-a>,
-    figure(image("../images/ball-bearing-2.png"), caption: [Straddle]) <fig-sub-b>,
+  subfigures(
+    subfigure(image("../images/ball-bearing-1.png"), caption: [Overhang]) <fig-sub-a>,
+    subfigure(image("../images/ball-bearing-2.png"), caption: [Straddle]) <fig-sub-b>,
   ),
   caption: [Zwei Lagerungsarten im Vergleich.],
 ) <fig-lagerungen>
 ```
 
+#import "../htldipl.typ": subfigure, subfigures
+
 #figure(
-  grid(
-    columns: 2,
-    gutter: 1cm,
-    figure(image("../images/ball-bearing-1.png", width: 100%), caption: [Overhang]),
-    figure(image("../images/ball-bearing-2.png", width: 100%), caption: [Straddle]),
+  subfigures(
+    subfigure(image("../images/ball-bearing-1.png", width: 100%), caption: [Overhang]),
+    subfigure(image("../images/ball-bearing-2.png", width: 100%), caption: [Straddle]),
   ),
   caption: [Zwei Lagerungsarten im Vergleich.],
 ) <fig-lagerungen>

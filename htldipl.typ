@@ -422,6 +422,25 @@
   }
 }
 
+// Teilabbildungen: Beschriftung "(a)", "(b)", … statt fortlaufender
+// Abbildungsnummern. Verwendung:
+//   #figure(
+//     subfigures(
+//       subfigure(image("a.png"), caption: [Variante A]) <fig-a>,
+//       subfigure(image("b.png"), caption: [Variante B]) <fig-b>,
+//     ),
+//     caption: [Gesamtbeschriftung],
+//   )
+#let subfigure(body, caption: none) = figure(
+  body, caption: caption,
+  kind: "subfigure", supplement: [], numbering: "(a)", outlined: false,
+)
+
+#let subfigures(columns: 2, gutter: 1cm, ..items) = {
+  counter(figure.where(kind: "subfigure")).update(0)
+  grid(columns: columns, gutter: gutter, ..items)
+}
+
 // Trennlinie (entspricht \trennstrich)
 #let trennstrich() = {
   v(1em)

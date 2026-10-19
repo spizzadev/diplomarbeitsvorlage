@@ -21,6 +21,8 @@ anzutun -- man wird erstaunt sein, wie viele Fehler man selbst überlesen hat.
 Abschließend noch eine kurze Liste der wichtigsten Punkte, an denen erfahrungsgemäß
 die häufigsten Fehler auftreten.
 
+// Checkliste darf über den Seitenumbruch laufen (Figures sind sonst unteilbar)
+#show figure: set block(breakable: true)
 #figure(
   block(
     stroke: 0.5pt,
